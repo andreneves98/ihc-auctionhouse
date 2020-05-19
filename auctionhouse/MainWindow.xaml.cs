@@ -20,9 +20,14 @@ namespace auctionhouse
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow() => InitializeComponent();
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
+            this.Hide();
+            Window1 t2 = new Window1();
+            t2.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -23,15 +23,20 @@ namespace auctionhouse
         public MainWindow()
         {
             InitializeComponent();
-            ((ListViewItem) FindName("home")).IsSelected = true; // first tab is Home
+            ListViewItem_Home.IsSelected = true; // first tab is Home
+            MainStackPanel.Visibility = Visibility.Collapsed;
+        }
+
+        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int index = ListViewMenu.SelectedIndex;
 
-            switch (index)
-            {
+            switch (index){
                 case 0: // Home
                     ContentGrid.Children.Clear();
                     ContentGrid.Children.Add(new Home());
@@ -52,9 +57,32 @@ namespace auctionhouse
                     ContentGrid.Children.Clear();
                     ContentGrid.Children.Add(new Perfil());
                     break;
-                Default:
-                    break;
             }
+        }
+
+        private void username_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox_username_hint.Visibility = Visibility.Visible;
+            if (TextBox_username.Text.Length > 0){
+                TextBox_username_hint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void PasswordBox_text_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            TextBox_password_hint.Visibility = Visibility.Visible;
+            if (PasswordBox_text.Password.Length > 0)
+            {
+                TextBox_password_hint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // check password
+            // change to main window
+            LoginGrid.Visibility = Visibility.Collapsed;
+            MainStackPanel.Visibility = Visibility.Visible;
         }
     }
 }

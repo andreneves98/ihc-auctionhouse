@@ -20,14 +20,41 @@ namespace auctionhouse
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow() => InitializeComponent();
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public MainWindow()
         {
-            this.Hide();
-            Window1 t2 = new Window1();
-            t2.ShowDialog();
-            this.Close();
+            InitializeComponent();
+            ((ListViewItem) FindName("home")).IsSelected = true; // first tab is Home
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = ListViewMenu.SelectedIndex;
+
+            switch (index)
+            {
+                case 0: // Home
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new Home());
+                    break;
+                case 1: // Leilões
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new Leiloes());
+                    break;
+                case 2: // Licitações
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new Licitacoes());
+                    break;
+                case 3: // Meus Leilões
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new MeusLeiloes());
+                    break;
+                case 4: // Perfil
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new Perfil());
+                    break;
+                Default:
+                    break;
+            }
         }
     }
 }

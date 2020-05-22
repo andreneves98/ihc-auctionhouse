@@ -3,10 +3,54 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:auctionhouse"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280">
-    <Grid>
-        <Button Content="Test Window&#xD;&#xA;" HorizontalAlignment="Left" Margin="247,95,0,0" VerticalAlignment="Top" Width="214" Click="Button_Click" Height="69"/>
-    </Grid>
+        Title="AuctionHouse" Height="675" Width="1200" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <StackPanel>
+        <Grid VerticalAlignment="Top" Height="100">
+            <ListView Name="ListViewMenu" Background="WhiteSmoke" Foreground="#FF2196F3" BorderThickness="0" SelectionChanged="ListView_SelectionChanged">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"></StackPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+                <ListViewItem Height="60" Margin="0 0 320 0" Name="home">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="AuctionHouse" FontSize="25" VerticalAlignment="Center" Margin="10 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Search" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Leilões" FontSize="25" VerticalAlignment="Center" Margin="10 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Money" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Licitações" FontSize="25" VerticalAlignment="Center" Margin="10 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="FormatListBulleted" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Meus Leilões" FontSize="25" VerticalAlignment="Center" Margin="10 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Account" Width="50" Height="50" VerticalAlignment="Center" Margin="5"/>
+                    </StackPanel>
+                </ListViewItem>
+            </ListView>
+            
+        </Grid>
+            
+        <Grid Margin="0 100 0 0" Background="White" VerticalAlignment="Top">
+            <Grid x:Name="ContentGrid" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+    </StackPanel>
 </Window>

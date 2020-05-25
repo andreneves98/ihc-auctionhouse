@@ -25,7 +25,7 @@
                     <materialDesign:PackIcon Kind="User" Width="50" Height="50" VerticalAlignment="Center" Margin="5" Foreground="#FF2196F3" />
                     <Grid>
                         <!-- overlay with hint text -->
-                        <TextBox Name="TextBox_username_hint" Text="Username" VerticalContentAlignment="Center" FontSize="20" Width="260" Foreground="LightBlue" />
+                        <TextBlock VerticalAlignment="Center" Name="TextBox_username_hint" Text="Username"  FontSize="20" Width="260" Foreground="LightBlue" />
                         <!-- enter user here -->
                         <TextBox Name="TextBox_username" VerticalContentAlignment="Center" FontSize="20" Width="260" Foreground="#FF2196F3" Background="Transparent" TextChanged="username_TextChanged"/>
                     </Grid>
@@ -35,7 +35,7 @@
                     <materialDesign:PackIcon Kind="Key" Width="50" Height="50" VerticalAlignment="Center" Margin="5" Foreground="#FF2196F3" />
                     <Grid>
                         <!-- overlay with hint text -->
-                        <TextBox Name="TextBox_password_hint" Text="Password" VerticalContentAlignment="Center" FontSize="20" Width="260" Foreground="LightBlue" />
+                        <TextBlock VerticalAlignment="Center" Name="TextBox_password_hint" Text="Password" FontSize="20" Width="260" Foreground="LightBlue" />
                         <!-- enter password here -->
                         <PasswordBox Name="PasswordBox_text" VerticalContentAlignment="Center" FontSize="20" Width="260" Background="Transparent" PasswordChanged="PasswordBox_text_PasswordChanged" Foreground="#FF2196F3" />
                     </Grid>
@@ -47,7 +47,7 @@
             </StackPanel>
         </Grid>
 
-        <StackPanel Name="MainStackPanel" Visibility="Collapsed">
+        <StackPanel Visibility="Collapsed" Name="MainStackPanel" >
             <Grid VerticalAlignment="Top" Height="100">
                 <ListView Name="ListViewMenu" Background="WhiteSmoke" Foreground="#FF2196F3" BorderThickness="0" SelectionChanged="ListView_SelectionChanged">
                     <ListView.ItemsPanel>
@@ -56,7 +56,7 @@
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
 
-                    <ListViewItem Height="60" Margin="0 0 320 0" Name="ListViewItem_Home">
+                    <ListViewItem Height="60" Margin="0 0 310 0" Name="ListViewItem_Home">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
                             <TextBlock Text="AuctionHouse" FontSize="25" VerticalAlignment="Center" Margin="10 0"/>
@@ -80,9 +80,10 @@
                             <TextBlock Text="Meus Leilões" FontSize="25" VerticalAlignment="Center" Margin="10 0"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Account" Width="50" Height="50" VerticalAlignment="Center" Margin="5"/>
+                    <ListViewItem Height="80">
+                        <StackPanel Orientation="Vertical">
+                            <materialDesign:PackIcon HorizontalAlignment="Center" Kind="Account" Width="50" Height="50" VerticalAlignment="Center" Margin="5"/>
+                            <TextBlock HorizontalAlignment="Center" FontSize="12" >Saldo: 13.37€</TextBlock>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>

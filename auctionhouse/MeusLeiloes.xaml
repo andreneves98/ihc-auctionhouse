@@ -7,9 +7,39 @@
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              Width="1150" Height="520">
-    <Grid>
+    <Grid Margin="0,0,853.4,448">
         <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
             <TextBox FontSize="50">Meus Leilões</TextBox>
+        </materialDesign:TransitioningContent>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide1" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
+            <Button  Margin="840,130,-840.2,-108" VerticalAlignment="Center" Height="50" Background="#FF2196F3" Foreground="White"  BorderThickness="0" FontSize="20" Click="Button_Click1" >Abrir Leilão</Button>
+        </materialDesign:TransitioningContent>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide2" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
+            <Button  Margin="838,278,-838.2,-256" VerticalAlignment="Center" Height="50" Background="#FF2196F3" Foreground="White"  BorderThickness="0" FontSize="20" Click="Button_Click2" >Abrir Leilão</Button>
+        </materialDesign:TransitioningContent>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide3" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
+            <Button  Margin="840,388,-840.2,-366" VerticalAlignment="Center" Height="50" Background="#FF2196F3" Foreground="White"  BorderThickness="0" FontSize="20" Click="Button_Click3" >Abrir Leilão</Button>
+        </materialDesign:TransitioningContent>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide4" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
+            <Image HorizontalAlignment="Left" Height="72" Margin="80,126,0,-126" VerticalAlignment="Top" Width="100"/>
+        </materialDesign:TransitioningContent>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide5" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
+            <Image HorizontalAlignment="Left" Height="72" Margin="80,269,0,-269" VerticalAlignment="Top" Width="100"/>
+        </materialDesign:TransitioningContent>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide6" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
+            <Image HorizontalAlignment="Left" Height="72" Margin="78,407,0,-407" VerticalAlignment="Top" Width="100"/>
+        </materialDesign:TransitioningContent>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide7" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
+            <TextBox FontSize="25" Margin="208,126,0,-89">Name 1</TextBox>
+        </materialDesign:TransitioningContent>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide8" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
+            <TextBox FontSize="25" Margin="208,269,0,-232">Name 2</TextBox>
+        </materialDesign:TransitioningContent>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide9" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
+            <TextBox FontSize="25" Margin="208,407,0,-370">Name 3</TextBox>
+        </materialDesign:TransitioningContent>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide10" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
+            <Button  Margin="434,427,-434.2,-405" VerticalAlignment="Center" Height="50" Background="#FF2196F3" Foreground="White"  BorderThickness="0" FontSize="20" Click="Button_Click3" >Criar Leilão</Button>
         </materialDesign:TransitioningContent>
     </Grid>
 </UserControl>

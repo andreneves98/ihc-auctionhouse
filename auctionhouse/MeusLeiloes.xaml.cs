@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace auctionhouse
 {
@@ -9,19 +10,26 @@ namespace auctionhouse
             InitializeComponent();
         }
 
-        private void Button_Click1(object sender, System.Windows.RoutedEventArgs e)
+        private void Inspect_Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            InspectGrid.Visibility = Visibility.Visible;
+            SearchGrid.Visibility = Visibility.Collapsed;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
-        private void Button_Click2(object sender, System.Windows.RoutedEventArgs e)
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
-        private void Button_Click3(object sender, System.Windows.RoutedEventArgs e)
+        private void Inspect_Back_Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-
+            SearchGrid.Visibility = Visibility.Visible;
+            InspectGrid.Visibility = Visibility.Collapsed;
         }
     }
 }

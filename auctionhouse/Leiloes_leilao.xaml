@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="auctionhouse.Leiloes_leilao"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:auctionhouse"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Height="150" Width="870">
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 0 0 20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                <materialDesign:PackIcon Kind="Image" Width="150" Height="150" Margin="0 0 60 0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="0 0 40 0" Width="210">
+                <TextBlock FontSize="15" Name="nome" ></TextBlock>
+                <TextBlock FontSize="15" Name="desc"></TextBlock>
+                <TextBlock FontSize="15" Name="estado"></TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="0 0 40 0" Width="210">
+                <TextBlock FontSize="15" Name="licit" ></TextBlock>
+                <TextBlock FontSize="15" Name="tempo"></TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Column="3" VerticalAlignment="Center">
+                <Button Width="Auto" Height="50" FontSize="30" Background="#FF2196F3" BorderThickness="0" Foreground="White" Click="Button_Click">Inspecionar</Button>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</UserControl>

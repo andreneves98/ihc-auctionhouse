@@ -88,7 +88,7 @@
                             <TextBlock Text="Meus Leilões" FontSize="25" VerticalAlignment="Center" Margin="10 0"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="80">
+                    <ListViewItem Height="80" Name="ListViewItem_Perfil">
                         <StackPanel Orientation="Vertical">
                             <materialDesign:PackIcon HorizontalAlignment="Center" Kind="Account" Width="50" Height="50" VerticalAlignment="Center" Margin="5"/>
                             <TextBlock HorizontalAlignment="Center" FontSize="12" >Saldo: 13.37€</TextBlock>

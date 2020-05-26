@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace auctionhouse
 {
@@ -7,6 +8,12 @@ namespace auctionhouse
         public Perfil()
         {
             InitializeComponent();
+        }
+
+        private void TerminarSessao_Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.TerminarSessao_Button_Click();
         }
     }
 }

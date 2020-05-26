@@ -23,8 +23,12 @@ namespace auctionhouse
         public MainWindow()
         {
             InitializeComponent();
-            ListViewItem_Home.IsSelected = true; // first tab is Home
+
             MainStackPanel.Visibility = Visibility.Collapsed;
+            ListViewItem_Home.IsSelected = true; // first tab is Home
+
+            LoginGrid.Visibility = Visibility.Visible;
+            LoginError.Visibility = Visibility.Collapsed;
         }
 
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
@@ -77,12 +81,35 @@ namespace auctionhouse
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Entrar_Button_Click(object sender, RoutedEventArgs e)
         {
+            String Username = "teste";
+            String Password = "teste";
+
             // check password
-            // change to main window
-            LoginGrid.Visibility = Visibility.Collapsed;
-            MainStackPanel.Visibility = Visibility.Visible;
+            if(TextBox_username.Text == Username && PasswordBox_text.Password == Password)
+            {
+                // change to main window
+                LoginGrid.Visibility = Visibility.Collapsed;
+                MainStackPanel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                // display error
+                LoginError.Visibility = Visibility.Collapsed;
+                LoginError.Visibility = Visibility.Visible;
+            }
+        }
+
+        public void TerminarSessao_Button_Click() // to be used by "Perfil" window
+        {
+            ListViewItem_Home.IsSelected = true; // first tab is Home
+            MainStackPanel.Visibility = Visibility.Collapsed;
+
+            LoginGrid.Visibility = Visibility.Visible;
+            LoginError.Visibility = Visibility.Collapsed;
+            TextBox_username.Text = "";
+            PasswordBox_text.Password = "";
         }
     }
 }

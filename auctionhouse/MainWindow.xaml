@@ -18,6 +18,13 @@
             <StackPanel Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">
                 <materialDesign:PackIcon Kind="Gavel" Width="50" Height="50" HorizontalAlignment="Center" Margin="5" Foreground="#FF2196F3"/> <!-- change with image -->
                 <TextBlock Text="AuctionHouse" FontSize="25" HorizontalAlignment="Center" Margin="10 0" Foreground="#FF2196F3" />
+                <Grid Name="LoginError" Margin="0 60 0 0" Visibility="Collapsed">
+                    <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect ExpandIn, Duration=0:0:0.4}">
+                        <Border BorderBrush="Red" BorderThickness="1">
+                            <TextBlock Foreground="Red" HorizontalAlignment="Center" FontSize="18">Insira Password e/ou Username corretamente.</TextBlock>
+                        </Border>
+                    </materialDesign:TransitioningContent>
+                </Grid>
             </StackPanel>
 
             <StackPanel Grid.Column="0" Grid.Row="1">
@@ -41,8 +48,9 @@
                     </Grid>
                 </StackPanel>
 
-                <StackPanel>
-                    <Button  Margin="0 20 0 0" VerticalAlignment="Center" Height="50" Background="#FF2196F3" Foreground="White"  BorderThickness="0" FontSize="20" Click="Button_Click" >Login</Button>
+                <StackPanel Margin="0 20 0 0" Orientation="Horizontal" Width="260">
+                    <Button  Margin="0 0 10 0" VerticalAlignment="Center" Height="50" Background="#FF2196F3" Foreground="White"  BorderThickness="0" Width="125" FontSize="20" FontWeight="Bold" Click="Entrar_Button_Click" >Entrar</Button>
+                    <Button  Margin="0 0 10 0" VerticalAlignment="Center" Height="50" Background="#FF2196F3" Foreground="White"  BorderThickness="0" Width="125" FontSize="20" FontWeight="Bold" >Registar</Button>
                 </StackPanel>
             </StackPanel>
         </Grid>

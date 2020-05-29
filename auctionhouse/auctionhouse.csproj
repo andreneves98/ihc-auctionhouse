@@ -146,6 +146,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\iphone6s.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\cadeira.jpg" />
+    <Resource Include="images\jantes.jpg" />
+    <Resource Include="images\maquina.jpg" />
+    <Resource Include="images\microondas.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.3.1.2\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.3.1.2\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

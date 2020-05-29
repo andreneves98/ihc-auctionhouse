@@ -10,7 +10,7 @@
 
     <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide"  OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
         <Grid>
-            <Grid  x:Name="InspectGrid" >
+            <Grid  x:Name="InspectGrid" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -40,8 +40,10 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Grid.Column="0">
-                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 0" Height="400">
-                        <materialDesign:PackIcon Kind="Image" Width="300" Height="300"/>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100 0 0 0" Height="400">
+                        <Border Margin="0 0 60 0" Background="LightGray" Height="300">
+                            <Image Name="Inspect_lei_img" Stretch="Fill" Margin="2 2 2 2" Width="300" Height="300"></Image>
+                        </Border>
                     </StackPanel>
                 </StackPanel>
 
@@ -85,7 +87,7 @@
                 </StackPanel>
             </Grid>
 
-            <Grid x:Name="SearchGrid" Visibility="Collapsed">
+            <Grid x:Name="SearchGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition />

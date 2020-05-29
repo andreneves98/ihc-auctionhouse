@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace auctionhouse
 {
@@ -46,10 +48,18 @@ namespace auctionhouse
             Inspect_lei_estado.Text = current_insp_leilao.Estado;
             Inspect_lei_ult_licit.Text = "Última licitação: " + current_insp_leilao.highestLicitacao().ToString() + " €";
             Inspect_lei_tempo.Text = "Tempo restante: " + current_insp_leilao.timeToEnd();
+            Inspect_lei_img.Source = new BitmapImage(new Uri(current_insp_leilao.imgPath, UriKind.Relative));
         }
 
         public void Inspect_Back_Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            // refresh leiloes list
+            string words = SearchWords.Text;
+            string categ = ((ComboBoxItem)Categ.SelectedItem).Content.ToString();
+            string sortText = ((ComboBoxItem)SortPrice.SelectedItem).Content.ToString();
+
+            setLeiloes(words, categ, sortText);
+
             SearchGrid.Visibility = Visibility.Visible;
             InspectGrid.Visibility = Visibility.Collapsed;
         }

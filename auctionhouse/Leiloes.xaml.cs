@@ -130,7 +130,9 @@ namespace auctionhouse
                 // clear value
                 licitar_text.Text = "";
 
-                current_insp_leilao.addLicitacao(new Licitacao(ahref.getUsername(), value));
+                Licitacao licit = new Licitacao(ahref.getUsername(), value);
+                current_insp_leilao.addLicitacao(licit); // add to Leilao
+                ahref.addUser_Licitacoes(licit); // add to User's list of licitações
 
                 init_inspect_fields();
             }

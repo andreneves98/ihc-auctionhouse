@@ -6,10 +6,13 @@
              xmlns:local="clr-namespace:auctionhouse"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-              Width="1150" Height="520">
-    <Grid>
-        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
-            <TextBox FontSize="50">Home</TextBox>
-        </materialDesign:TransitioningContent>
-    </Grid>
+             Width="1150" Height="520">
+    <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide"  OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
+        <Grid>
+            <StackPanel>
+                <TextBlock FontSize="50" HorizontalAlignment="Center" Margin="0 50 0 0" Foreground="#FF2196F3">Bem-vindo ao AuctionHouse,</TextBlock>
+                <TextBlock x:Name="home_username" FontSize="50" HorizontalAlignment="Center" Margin="0 50 0 0" Foreground="#FF2196F3"></TextBlock>
+            </StackPanel>
+        </Grid>
+    </materialDesign:TransitioningContent>
 </UserControl>

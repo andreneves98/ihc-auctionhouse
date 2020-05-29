@@ -11,13 +11,21 @@ namespace auctionhouse
     public class AuctionHouse
     {
         private List<Leilao> Leiloes;
-        private String username;
+        private List<Licitacao> User_Licitacoes;
+        private String username; // "Artur Filipe"
 
         public AuctionHouse(String first_last)
         {
             username = first_last;
             Leiloes = new List<Leilao>();
+            User_Licitacoes = new List<Licitacao>();
         }
+
+        public void addUser_Licitacoes(Licitacao l)
+        {
+            User_Licitacoes.Add(l);
+        }
+
 
         public void addLeilao(Leilao l)
         {
@@ -27,6 +35,11 @@ namespace auctionhouse
         public String getUsername()
         {
             return username;
+        }
+
+        public Licitacao[] gerUser_Licitacoes()
+        {
+            return User_Licitacoes.ToArray();
         }
 
         public Leilao[] getLeiloes(String Keywords, String Categoria, int order) // order=1 crescente order=-1 decrescente

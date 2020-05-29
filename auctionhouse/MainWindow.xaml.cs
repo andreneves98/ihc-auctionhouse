@@ -26,7 +26,6 @@ namespace auctionhouse
             InitializeComponent();
 
             MainStackPanel.Visibility = Visibility.Collapsed;
-            ListViewItem_Home.IsSelected = true; // first tab is Home
 
             LoginGrid.Visibility = Visibility.Visible;
             LoginError.Visibility = Visibility.Collapsed;
@@ -90,9 +89,9 @@ namespace auctionhouse
             // check password
             if(TextBox_username.Text == Username && PasswordBox_text.Password == Password)
             {
-                InitAuctionHouse("Artur Filipe");
-
                 // change to main window
+                InitAuctionHouse("Artur Filipe");
+                ListViewItem_Home.IsSelected = true; // first tab is Home
                 LoginGrid.Visibility = Visibility.Collapsed;
                 MainStackPanel.Visibility = Visibility.Visible;
             }
@@ -147,6 +146,9 @@ namespace auctionhouse
             l.addLicitacao(new Licitacao("João Almeida", 352));
             l.addLicitacao(new Licitacao("Joaquim Trindade", 370));
             ah.addLeilao(l);
+
+            // init User's licitações
+            // ah.addUser_Licitacoes();
         }
     }
 }

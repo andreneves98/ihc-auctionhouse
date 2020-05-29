@@ -34,12 +34,21 @@ namespace auctionhouse
             estado.Text = l.Estado;
 
             licit.Text = "Ultima licitação: " + l.highestLicitacao() + " €";
-            tempo.Text = "Tempo restante: " + l.timeToEnd();
+
+            String t = l.timeToEnd();
+            if (t == "")
+            {
+                tempo.Text = "";
+            }
+            else
+            {
+                tempo.Text = "Tempo restante: " + t;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            leiloes_window.Inspect_Button_Click();
+            leiloes_window.Inspect_Button_Click(leilao);
         }
     }
 }

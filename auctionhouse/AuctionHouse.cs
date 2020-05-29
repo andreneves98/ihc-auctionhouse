@@ -11,15 +11,22 @@ namespace auctionhouse
     public class AuctionHouse
     {
         private List<Leilao> Leiloes;
+        private String username;
 
-        public AuctionHouse()
+        public AuctionHouse(String first_last)
         {
+            username = first_last;
             Leiloes = new List<Leilao>();
         }
 
         public void addLeilao(Leilao l)
         {
             Leiloes.Add(l);
+        }
+
+        public String getUsername()
+        {
+            return username;
         }
 
         public Leilao[] getLeiloes(String Keywords, String Categoria, int order) // order=1 crescente order=-1 decrescente
@@ -31,7 +38,7 @@ namespace auctionhouse
                 {
                     if(Keywords != "")
                     {
-                        if (l.Categoria.Contains(Keywords))
+                        if (l.Nome.ToLower().Contains(Keywords.ToLower()))
                         {
                             res.Add(l);
                         }
@@ -99,6 +106,12 @@ namespace auctionhouse
         public String timeToEnd()
         {
             var now = DateTime.Now;
+
+            if (DataFim < now)
+            {
+                return "";
+            }
+
             var diff = DataFim.Subtract(now);
             return String.Format("{0}d {1}:{2}:{3}h", diff.Days, diff.Hours, diff.Minutes, diff.Seconds);
         } 

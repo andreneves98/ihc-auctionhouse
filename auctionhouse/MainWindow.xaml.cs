@@ -25,8 +25,6 @@ namespace auctionhouse
         {
             InitializeComponent();
 
-            InitAuctionHouse();
-
             MainStackPanel.Visibility = Visibility.Collapsed;
             ListViewItem_Home.IsSelected = true; // first tab is Home
 
@@ -92,6 +90,8 @@ namespace auctionhouse
             // check password
             if(TextBox_username.Text == Username && PasswordBox_text.Password == Password)
             {
+                InitAuctionHouse("Artur Filipe");
+
                 // change to main window
                 LoginGrid.Visibility = Visibility.Collapsed;
                 MainStackPanel.Visibility = Visibility.Visible;
@@ -117,20 +117,35 @@ namespace auctionhouse
             PasswordBox_text.Password = "";
         }
         
-        private void InitAuctionHouse()
+        private void InitAuctionHouse(String username)
         {
             String[] Categorias = {"Electrodomésticos", "Telemóveis", "Escritório", "Automóveis"};
 
-            ah = new AuctionHouse();
+            ah = new AuctionHouse(username);
             Leilao l = new Leilao("Jantes", "Jantes para um carro", "Aberto", Categorias[3], DateTime.Now.AddDays(5), "/imgs/jantes.jpg");
             l.addLicitacao(new Licitacao("Joaquim Trindade", 53));
             l.addLicitacao(new Licitacao("João Almeida", 120));
             l.addLicitacao(new Licitacao("André Silva", 80));
             ah.addLeilao(l);
 
-            l = new Leilao("Máquina de lavar roupa", "em segunda mão", "Aberto", Categorias[0], DateTime.Now.AddDays(5), "/imgs/maquina.jpg");
+            l = new Leilao("Máquina de lavar roupa", "em segunda mão", "Aberto", Categorias[0], DateTime.Now.AddDays(2), "/imgs/maquina.jpg");
             l.addLicitacao(new Licitacao("Maria Alves", 350));
             l.addLicitacao(new Licitacao("Pedro Nogueira", 455));
+            ah.addLeilao(l);
+
+            l = new Leilao("Microondas", "microondas novo", "Aberto", Categorias[0], DateTime.Now.AddDays(10), "/imgs/microondas.jpg");
+            l.addLicitacao(new Licitacao("Maria Alves", 70));
+            l.addLicitacao(new Licitacao("Pedro Nogueira", 90));
+            ah.addLeilao(l);
+
+            l = new Leilao("IPhone 6S", "Usado", "Aberto", Categorias[1], DateTime.Now.AddDays(1), "/imgs/iphone6s.jpg");
+            l.addLicitacao(new Licitacao("João Almeida", 352));
+            l.addLicitacao(new Licitacao("Joaquim Trindade", 370));
+            ah.addLeilao(l);
+
+            l = new Leilao("Cadeira", "Usado", "Fechado", Categorias[2], DateTime.Now.AddDays(-1), "/imgs/cadeira.jpg");
+            l.addLicitacao(new Licitacao("João Almeida", 352));
+            l.addLicitacao(new Licitacao("Joaquim Trindade", 370));
             ah.addLeilao(l);
         }
     }

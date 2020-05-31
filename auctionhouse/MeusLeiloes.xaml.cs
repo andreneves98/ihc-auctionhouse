@@ -34,9 +34,6 @@ namespace auctionhouse
             LicitarError.Visibility = Visibility.Collapsed;
             LicitarSuccess.Visibility = Visibility.Collapsed;
 
-            // clear value
-            licitar_text.Text = "";
-
             InspectGrid.Visibility = Visibility.Visible;
             SearchGrid.Visibility = Visibility.Collapsed;
         }
@@ -88,55 +85,6 @@ namespace auctionhouse
             foreach (Leilao lei in leiloes)
             {
                 Leiloes_StackPanel.Children.Add(new Leiloes_leilao(this, lei));
-            }
-        }
-
-        private void licitar_text_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox_licitar_hint.Visibility = Visibility.Visible;
-            if (licitar_text.Text.Length > 0)
-            {
-                TextBox_licitar_hint.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void Licitar_Button_Click(object sender, RoutedEventArgs e)
-        {
-            double value = 0;
-            bool res = double.TryParse(licitar_text.Text, out value);
-            if (!res)
-            {
-                Licitar_error_text.Text = "Insira um valor numérico.";
-                // display error
-                LicitarSuccess.Visibility = Visibility.Collapsed;
-                LicitarError.Visibility = Visibility.Collapsed;
-                LicitarError.Visibility = Visibility.Visible;
-            }
-            else if (value <= current_insp_leilao.highestLicitacao())
-            {
-                Licitar_error_text.Text = "Insira um valor superior à ultima licitação.";
-                // display error
-                LicitarSuccess.Visibility = Visibility.Collapsed;
-                LicitarError.Visibility = Visibility.Collapsed;
-                LicitarError.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                // clean prev error
-                LicitarError.Visibility = Visibility.Collapsed;
-                LicitarSuccess.Visibility = Visibility.Collapsed;
-
-                // display success
-                LicitarSuccess.Visibility = Visibility.Visible;
-
-                // clear value
-                licitar_text.Text = "";
-
-                Licitacao licit = new Licitacao(ahref.getUsername(), value);
-                current_insp_leilao.addLicitacao(licit); // add to Leilao
-                ahref.addUser_Licitacoes(licit); // add to User's list of licitações
-
-                init_inspect_fields();
             }
         }
     }

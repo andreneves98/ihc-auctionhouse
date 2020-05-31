@@ -48,18 +48,12 @@
 
                 <StackPanel Grid.Row="1" Grid.Column="1">
                     <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 150 0 0" Height="170" Width="250">
-                        <StackPanel Margin="0 0 0 10">
-                            <TextBlock FontSize="20" Foreground="#FF2196F3" >Insira quantia:</TextBlock>
-                        </StackPanel>
+                        <StackPanel Margin="0 0 0 10"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                             <Grid>
                                 <!-- overlay with hint text -->
-                                <TextBlock VerticalAlignment="Center" Name="TextBox_licitar_hint" Text=" 00.00" FontSize="20" Width="120" Foreground="LightBlue" />
                                 <!-- enter value here -->
-                                <TextBox Name="licitar_text" VerticalContentAlignment="Center" FontSize="20" Width="120" Background="Transparent" TextChanged="licitar_text_TextChanged" Foreground="#FF2196F3" />
                             </Grid>
-                            <TextBlock Margin="5 0 0 0" VerticalAlignment="Center" Text="€" FontSize="30" Foreground="#FF2196F3"/>
-                            <Button  Margin="10 0 0 0" VerticalAlignment="Center" Height="50" Background="#FF2196F3" Foreground="White"  BorderThickness="0" Width="100" FontSize="20" FontWeight="Bold" Click="Licitar_Button_Click" >Licitar</Button>
                         </StackPanel>
 
                         <StackPanel>
@@ -86,7 +80,7 @@
                 </StackPanel>
             </Grid>
 
-            <Grid x:Name="SearchGrid">
+            <Grid x:Name="SearchGrid" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition />

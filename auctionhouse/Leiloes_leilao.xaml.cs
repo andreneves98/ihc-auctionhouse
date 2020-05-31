@@ -12,7 +12,7 @@ namespace auctionhouse
     {
         private Leilao leilao;
         private Leiloes leiloes_window;
-        private Leilao Meusleilao;
+        private Leilao Meuleilao;
         private MeusLeiloes Meusleiloes_window;
 
         public Leiloes_leilao(Leiloes window, Leilao l)
@@ -46,7 +46,7 @@ namespace auctionhouse
             InitializeComponent();
 
             Meusleiloes_window = window;
-            Meusleilao = l;
+            Meuleilao = l;
 
             nome.Text = l.Nome;
             desc.Text = l.Descricao;
@@ -69,7 +69,14 @@ namespace auctionhouse
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            leiloes_window.Inspect_Button_Click(leilao);
+            if (leiloes_window == null)
+            {
+                Meusleiloes_window.Inspect_Button_Click(Meuleilao);
+            }
+            else
+            {
+                leiloes_window.Inspect_Button_Click(leilao);
+            }
         }
     }
 }

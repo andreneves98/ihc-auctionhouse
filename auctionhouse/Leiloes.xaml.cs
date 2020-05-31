@@ -83,7 +83,7 @@ namespace auctionhouse
 
             Leiloes_StackPanel.Children.Clear();
 
-            Leilao[] leiloes = ahref.getLeiloes(words, categ, sortby);
+            Leilao[] leiloes = ahref.getLeiloes(words, categ, sortby, null);
             foreach (Leilao lei in leiloes)
             {
                 Leiloes_StackPanel.Children.Add(new Leiloes_leilao(this, lei));

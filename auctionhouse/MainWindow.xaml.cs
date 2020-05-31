@@ -55,7 +55,7 @@ namespace auctionhouse
                     break;
                 case 3: // Meus Leilões
                     ContentGrid.Children.Clear();
-                    ContentGrid.Children.Add(new MeusLeiloes());
+                    ContentGrid.Children.Add(new MeusLeiloes("Artur Filipe"));
                     break;
                 case 4: // Perfil
                     ContentGrid.Children.Clear();
@@ -121,28 +121,28 @@ namespace auctionhouse
             String[] Categorias = {"Electrodomésticos", "Telemóveis", "Escritório", "Automóveis"};
 
             ah = new AuctionHouse(username);
-            Leilao l = new Leilao("Jantes", "Jantes para um carro", "Aberto", Categorias[3], DateTime.Now.AddDays(5), "images/jantes.jpg");
+            Leilao l = new Leilao("Jantes", "Jantes para um carro", "Aberto", Categorias[3], DateTime.Now.AddDays(5), "images/jantes.jpg", "Artur Filipe");
             l.addLicitacao(new Licitacao("Joaquim Trindade", 53));
             l.addLicitacao(new Licitacao("João Almeida", 120));
             l.addLicitacao(new Licitacao("André Silva", 80));
             ah.addLeilao(l);
 
-            l = new Leilao("Máquina de lavar roupa", "em segunda mão", "Aberto", Categorias[0], DateTime.Now.AddDays(2), "images/maquina.jpg");
+            l = new Leilao("Máquina de lavar roupa", "em segunda mão", "Aberto", Categorias[0], DateTime.Now.AddDays(2), "images/maquina.jpg", "Miguel Costa");
             l.addLicitacao(new Licitacao("Maria Alves", 350));
             l.addLicitacao(new Licitacao("Pedro Nogueira", 455));
             ah.addLeilao(l);
 
-            l = new Leilao("Microondas", "microondas novo", "Aberto", Categorias[0], DateTime.Now.AddDays(10), "images/microondas.jpg");
+            l = new Leilao("Microondas", "microondas novo", "Aberto", Categorias[0], DateTime.Now.AddDays(10), "images/microondas.jpg", "Bruno Pereira");
             l.addLicitacao(new Licitacao("Maria Alves", 70));
             l.addLicitacao(new Licitacao("Pedro Nogueira", 90));
             ah.addLeilao(l);
 
-            l = new Leilao("IPhone 6S", "Usado", "Aberto", Categorias[1], DateTime.Now.AddDays(1), "images/iphone6s.jpg");
+            l = new Leilao("IPhone 6S", "Usado", "Aberto", Categorias[1], DateTime.Now.AddDays(1), "images/iphone6s.jpg", "Jorge Mendes");
             l.addLicitacao(new Licitacao("João Almeida", 352));
             l.addLicitacao(new Licitacao("Joaquim Trindade", 370));
             ah.addLeilao(l);
 
-            l = new Leilao("Cadeira", "Usado", "Fechado", Categorias[2], DateTime.Now.AddDays(-1), "images/cadeira.jpg");
+            l = new Leilao("Cadeira", "Usado", "Fechado", Categorias[2], DateTime.Now.AddDays(-1), "images/cadeira.jpg", "Andre Neves");
             l.addLicitacao(new Licitacao("João Almeida", 352));
             l.addLicitacao(new Licitacao("Joaquim Trindade", 370));
             ah.addLeilao(l);

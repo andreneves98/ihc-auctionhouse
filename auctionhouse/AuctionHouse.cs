@@ -42,23 +42,46 @@ namespace auctionhouse
             return User_Licitacoes.ToArray();
         }
 
-        public Leilao[] getLeiloes(String Keywords, String Categoria, int order) // order=1 crescente order=-1 decrescente
+        public Leilao[] getLeiloes(String Keywords, String Categoria, int order, String user) // order=1 crescente order=-1 decrescente
         {
             List<Leilao> res = new List<Leilao>();
             foreach (Leilao l in Leiloes)
             {
-                if(l.Categoria == Categoria | Categoria == "Todos")
+                if (user == null)
                 {
-                    if(Keywords != "")
+                    if (l.Categoria == Categoria | Categoria == "Todos")
                     {
-                        if (l.Nome.ToLower().Contains(Keywords.ToLower()))
+                        if (Keywords != "")
+                        {
+                            if (l.Nome.ToLower().Contains(Keywords.ToLower()))
+                            {
+                                res.Add(l);
+                            }
+                        }
+                        else
                         {
                             res.Add(l);
                         }
                     }
-                    else
+                }
+                else
+                {
+                    if (l.Owner == user)
                     {
-                        res.Add(l);
+                        if (l.Categoria == Categoria | Categoria == "Todos")
+                        {
+                            if (Keywords != "")
+                            {
+                                if (l.Nome.ToLower().Contains(Keywords.ToLower()))
+                                {
+                                    res.Add(l);
+                                }
+                            }
+                            else
+                            {
+                                res.Add(l);
+                            }
+                        }
                     }
                 }
             }
@@ -82,9 +105,10 @@ namespace auctionhouse
         public String Categoria;
         public DateTime DataFim;
         public String imgPath;
+        public String Owner;
         public List<Licitacao> Licitacoes;
 
-        public Leilao(String n, String desc, String e, String categ, DateTime fim, String img)
+        public Leilao(String n, String desc, String e, String categ, DateTime fim, String img, String Own)
         {
             Nome = n;
             Descricao = desc;
@@ -92,6 +116,7 @@ namespace auctionhouse
             Categoria = categ;
             DataFim = fim;
             imgPath = img;
+            Owner = Own;
             Licitacoes = new List<Licitacao>();
         }
 

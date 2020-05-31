@@ -104,10 +104,10 @@ namespace auctionhouse
             {
                 leiloes_window.Inspect_Button_Click(leilao);
             }
-            /*else
+            else
             {
-                licitacoes_window.Inspect_Button_Click()
-            }*/
+                licitacoes_window.Inspect_Button_Click(leilao);
+            }
         }
     }
 }

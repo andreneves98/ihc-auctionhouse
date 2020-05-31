@@ -7,15 +7,97 @@
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              Width="1150" Height="520">
-    <Grid>
-        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
-            <Grid HorizontalAlignment="Left" Height="420" Margin="0,100,0,0" VerticalAlignment="Top" Width="1150">
+    
+    <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
+        <Grid>
+            <Grid  x:Name="InspectGrid" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <Button x:Name="InspectBack" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5 5 0 0" BorderThickness="0" Background="Transparent" Foreground="#FF2196F3" Width="50" Height="50" Click="Inspect_Back_Button_Click">
+                        <materialDesign:PackIcon Kind="ArrowBackCircle" Width="50" Height="50" />
+                    </Button>
+                    <StackPanel Margin="100 0 0 0">
+                        <TextBlock x:Name="Inspect_lei_nome" FontSize="30" Foreground="#FF2196F3" FontWeight="Bold">Nome 1</TextBlock>
+                        <TextBlock x:Name="Inspect_lei_desc" FontSize="30" Foreground="#FF2196F3">Descrição com algum texto></TextBlock>
+                        <TextBlock x:Name="Inspect_lei_estado" FontSize="30" Foreground="#FF2196F3">Aberto</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="1">
+                    <StackPanel Margin="0 70 0 0">
+                        <TextBlock x:Name="Inspect_lei_ult_licit" FontSize="30" Foreground="#FF2196F3">Ultima licitação: 15.22 €</TextBlock>
+                        <TextBlock x:Name="Inspect_lei_tempo" FontSize="30" Foreground="#FF2196F3" >Tempo restante: 1 dia, 2 horas</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="0">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100 0 0 0" Height="400">
+                        <Border Margin="0 0 60 0" Background="LightGray" Height="300">
+                            <Image Name="Inspect_lei_img" Stretch="Fill" Margin="2 2 2 2" Width="300" Height="300"></Image>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 150 0 0" Height="170" Width="250">
+                        <StackPanel Margin="0 0 0 10">
+                            <TextBlock FontSize="20" Foreground="#FF2196F3" >Insira quantia:</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Grid>
+                                <!-- overlay with hint text -->
+                                <TextBlock VerticalAlignment="Center" Name="TextBox_licitar_hint" Text=" 00.00" FontSize="20" Width="120" Foreground="LightBlue" />
+                                <!-- enter value here -->
+                                <TextBox Name="licitar_text" VerticalContentAlignment="Center" FontSize="20" Width="120" Background="Transparent" TextChanged="licitar_text_TextChanged" Foreground="#FF2196F3" />
+                            </Grid>
+                            <TextBlock Margin="5 0 0 0" VerticalAlignment="Center" Text="€" FontSize="30" Foreground="#FF2196F3"/>
+                            <Button  Margin="10 0 0 0" VerticalAlignment="Center" Height="50" Background="#FF2196F3" Foreground="White"  BorderThickness="0" Width="100" FontSize="20" FontWeight="Bold" Click="Licitar_Button_Click" >Licitar</Button>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <Grid Name="LicitarError" Margin="0 10 0 0" Visibility="Collapsed">
+                                <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn, Duration=0:0:0.4}">
+                                    <Border BorderBrush="Red" BorderThickness="1">
+                                        <StackPanel>
+                                            <TextBlock x:Name="Licitar_error_text" Foreground="Red" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </materialDesign:TransitioningContent>
+                            </Grid>
+                            <Grid Name="LicitarSuccess" Margin="0 10 0 0" Visibility="Collapsed">
+                                <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn, Duration=0:0:0.4}">
+                                    <Border BorderBrush="Green" BorderThickness="1">
+                                        <StackPanel>
+                                            <TextBlock Foreground="Green" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap" Text="Licitação Completa!"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </materialDesign:TransitioningContent>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <Grid Name="contentGrid" HorizontalAlignment="Left" Height="420" Margin="0,100,0,0" VerticalAlignment="Top" Width="1150">
                 <ScrollViewer HorizontalAlignment="Left" Height="410" Margin="125,0,0,0" VerticalAlignment="Top" Width="900">
                     <StackPanel Name="Leiloes_StackPanel">
-
+                        <Grid x:Name="messageGrid" Height="266" Width="700" Visibility="Collapsed">
+                            <TextBlock FontSize="30" Foreground="#FF2196F3" >Ainda não tem licitações!</TextBlock>
+                        </Grid>
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
-        </materialDesign:TransitioningContent>
-    </Grid>
+            <TextBlock FontSize="30" Foreground="#FF2196F3" Text="As minhas licitações"/>
+        </Grid>
+    </materialDesign:TransitioningContent>
+    
 </UserControl>

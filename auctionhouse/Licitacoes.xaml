@@ -9,7 +9,13 @@
              Width="1150" Height="520">
     <Grid>
         <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
-            <TextBox FontSize="50">Licitações</TextBox>
+            <Grid HorizontalAlignment="Left" Height="420" Margin="0,100,0,0" VerticalAlignment="Top" Width="1150">
+                <ScrollViewer HorizontalAlignment="Left" Height="410" Margin="125,0,0,0" VerticalAlignment="Top" Width="900">
+                    <StackPanel Name="Leiloes_StackPanel">
+
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
         </materialDesign:TransitioningContent>
     </Grid>
 </UserControl>

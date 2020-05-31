@@ -37,9 +37,26 @@ namespace auctionhouse
             return username;
         }
 
-        public Licitacao[] gerUser_Licitacoes()
+        public Licitacao[] getUser_Licitacoes()
         {
             return User_Licitacoes.ToArray();
+        }
+
+        public Leilao[] getUserLeiloes(String user)
+        {
+            List<Leilao> userLeiloes = new List<Leilao>();
+            foreach(Leilao lei in Leiloes)
+            {
+                foreach(Licitacao lic in lei.Licitacoes)
+                {
+                    if(lic.user == user)
+                    {
+                        userLeiloes.Add(lei);
+                    }  
+                }
+            }
+
+            return userLeiloes.ToArray();
         }
 
         public Leilao[] getLeiloes(String Keywords, String Categoria, int order, String user) // order=1 crescente order=-1 decrescente

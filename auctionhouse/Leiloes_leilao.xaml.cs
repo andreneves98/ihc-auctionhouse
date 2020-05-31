@@ -12,6 +12,7 @@ namespace auctionhouse
     {
         private Leilao leilao;
         private Leiloes leiloes_window;
+        private Licitacoes licitacoes_window;
         private Leilao Meuleilao;
         private MeusLeiloes Meusleiloes_window;
 
@@ -20,6 +21,32 @@ namespace auctionhouse
             InitializeComponent();
 
             leiloes_window = window;
+            leilao = l;
+
+            nome.Text = l.Nome;
+            desc.Text = l.Descricao;
+            estado.Text = l.Estado;
+
+            licit.Text = "Ultima licitação: " + l.highestLicitacao() + " €";
+
+            String t = l.timeToEnd();
+            if (t == "")
+            {
+                tempo.Text = "";
+            }
+            else
+            {
+                tempo.Text = "Tempo restante: " + t;
+            }
+
+            img.Source = new BitmapImage(new Uri(l.imgPath, UriKind.Relative));
+        }
+
+        public Leiloes_leilao(Licitacoes window, Leilao l)
+        {
+            InitializeComponent();
+
+            licitacoes_window = window;
             leilao = l;
 
             nome.Text = l.Nome;
@@ -69,14 +96,18 @@ namespace auctionhouse
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (leiloes_window == null)
+            if (leiloes_window == null && licitacoes_window == null)
             {
                 Meusleiloes_window.Inspect_Button_Click(Meuleilao);
             }
-            else
+            else if(licitacoes_window == null && Meusleiloes_window == null)
             {
                 leiloes_window.Inspect_Button_Click(leilao);
             }
+            /*else
+            {
+                licitacoes_window.Inspect_Button_Click()
+            }*/
         }
     }
 }

@@ -20,6 +20,7 @@ namespace auctionhouse
 
             Categ.AddHandler(ComboBox.SelectionChangedEvent, new RoutedEventHandler(Search_Options_Changed));
             SortPrice.AddHandler(ComboBox.SelectionChangedEvent, new RoutedEventHandler(Search_Options_Changed));
+            Categoria.AddHandler(ComboBox.SelectionChangedEvent, new RoutedEventHandler(Search_Options_Changed));
             this.username = username;
             setLeiloes("", "Todos", "Preço asce.");
         }
@@ -72,6 +73,7 @@ namespace auctionhouse
 
             SearchGrid.Visibility = Visibility.Visible;
             InspectGrid.Visibility = Visibility.Collapsed;
+            AddGrid.Visibility = Visibility.Collapsed;
         }
 
         private void Search_Options_Changed(object sender, RoutedEventArgs e)
@@ -97,6 +99,97 @@ namespace auctionhouse
             foreach (Leilao lei in leiloes)
             {
                 Leiloes_StackPanel.Children.Add(new Leiloes_leilao(this, lei));
+            }
+        }
+
+        private void add_leilao(object sender, RoutedEventArgs e)
+        {
+            SearchGrid.Visibility = Visibility.Collapsed;
+            AddGrid.Visibility = Visibility.Visible;
+        }
+
+        private void add_leilao_confirm(object sender, RoutedEventArgs e)
+        {
+            String category = ((ComboBoxItem)Categ.SelectedItem).Content.ToString();
+            double value = 0;
+            String desc = "";
+            String nome = "";
+            bool res = double.TryParse(TextBox_value.Text, out value);
+            if (TextBox_name.Text.Length < 1)
+            {
+                /*Licitar_error_text.Text = "Insira um valor superior à ultima licitação.";
+                // display error
+                LicitarSuccess.Visibility = Visibility.Collapsed;
+                LicitarError.Visibility = Visibility.Collapsed;
+                LicitarError.Visibility = Visibility.Visible;*/
+            }else if (TextBox_desc.Text.Length < 1)
+            {
+                /*Licitar_error_text.Text = "Insira um valor superior à ultima licitação.";
+                // display error
+                LicitarSuccess.Visibility = Visibility.Collapsed;
+                LicitarError.Visibility = Visibility.Collapsed;
+                LicitarError.Visibility = Visibility.Visible;*/
+            }else if (!res)
+            {
+                /*Licitar_error_text.Text = "Insira um valor numérico.";
+                // display error
+                LicitarSuccess.Visibility = Visibility.Collapsed;
+                LicitarError.Visibility = Visibility.Collapsed;
+                LicitarError.Visibility = Visibility.Visible;*/
+            }else
+            {
+                /*// clean prev error
+                LicitarError.Visibility = Visibility.Collapsed;
+                LicitarSuccess.Visibility = Visibility.Collapsed;
+
+                // display success
+                LicitarSuccess.Visibility = Visibility.Visible;
+
+                // clear value
+                licitar_text.Text = "";*/
+
+                nome = TextBox_name.Text;
+                desc = TextBox_desc.Text;
+
+                TextBox_name.Text = "";
+                TextBox_desc.Text = "";
+                TextBox_value.Text = "";
+
+                Leilao l = l = new Leilao(nome, desc, "Aberto", category, DateTime.Now.AddDays(2), "images/maquina.jpg", username);
+                ahref.addLeilao(l);
+
+                SearchGrid.Visibility = Visibility.Visible;
+                AddGrid.Visibility = Visibility.Collapsed;
+
+                setLeiloes("", "Todos", "Preço asce.");
+
+            }
+        }
+
+        private void name_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox_name_hint.Visibility = Visibility.Visible;
+            if (TextBox_name.Text.Length > 0)
+            {
+                TextBox_name_hint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void desc_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox_desc_hint.Visibility = Visibility.Visible;
+            if (TextBox_desc.Text.Length > 0)
+            {
+                TextBox_desc_hint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void value_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox_value_hint.Visibility = Visibility.Visible;
+            if (TextBox_value.Text.Length > 0)
+            {
+                TextBox_value_hint.Visibility = Visibility.Hidden;
             }
         }
     }

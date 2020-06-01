@@ -47,40 +47,11 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Grid.Column="1">
-                    <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 150 0 0" Height="170" Width="250">
-                        <StackPanel Margin="0 0 0 10"/>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Grid>
-                                <!-- overlay with hint text -->
-                                <!-- enter value here -->
-                            </Grid>
-                        </StackPanel>
-
-                        <StackPanel>
-                            <Grid Name="LicitarError" Margin="0 10 0 0" Visibility="Collapsed">
-                                <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn, Duration=0:0:0.4}">
-                                    <Border BorderBrush="Red" BorderThickness="1">
-                                        <StackPanel>
-                                            <TextBlock x:Name="Licitar_error_text" Foreground="Red" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap"></TextBlock>
-                                        </StackPanel>
-                                    </Border>
-                                </materialDesign:TransitioningContent>
-                            </Grid>
-                            <Grid Name="LicitarSuccess" Margin="0 10 0 0" Visibility="Collapsed">
-                                <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn, Duration=0:0:0.4}">
-                                    <Border BorderBrush="Green" BorderThickness="1">
-                                        <StackPanel>
-                                            <TextBlock Foreground="Green" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap" Text="Licitação Completa!"></TextBlock>
-                                        </StackPanel>
-                                    </Border>
-                                </materialDesign:TransitioningContent>
-                            </Grid>
-                        </StackPanel>
-                    </StackPanel>
+                    <TextBlock x:Name="Inspect_lei_hist" FontSize="30" Foreground="#FF2196F3" ></TextBlock>
                 </StackPanel>
             </Grid>
 
-            <Grid x:Name="SearchGrid" >
+            <Grid x:Name="SearchGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition />

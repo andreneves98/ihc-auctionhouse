@@ -137,14 +137,23 @@ namespace auctionhouse
             l.addLicitacao(new Licitacao("Pedro Nogueira", 90));
             ah.addLeilao(l);
 
-            l = new Leilao("IPhone 6S", "Usado", "Aberto", Categorias[1], DateTime.Now.AddDays(1), "images/iphone6s.jpg", "Jorge Mendes");
+            l = new Leilao("IPhone 6S", "Usado", "Aberto", Categorias[1], DateTime.Now.AddDays(1), "images/iphone6s.jpg", "Artur Filipe");
             l.addLicitacao(new Licitacao("João Almeida", 352));
             l.addLicitacao(new Licitacao("Joaquim Trindade", 370));
+            l.addLicitacao(new Licitacao("João Almeida", 389));
+            l.addLicitacao(new Licitacao("Joaquim Trindade", 400));
+            l.addLicitacao(new Licitacao("João Almeida", 420));
             ah.addLeilao(l);
 
-            l = new Leilao("Cadeira", "Usado", "Fechado", Categorias[2], DateTime.Now.AddDays(-1), "images/cadeira.jpg", "Andre Neves");
+            l = new Leilao("Cadeira", "Usado", "Fechado", Categorias[2], DateTime.Now.AddDays(-1), "images/cadeira.jpg", "Artur Filipe");
             l.addLicitacao(new Licitacao("João Almeida", 352));
             l.addLicitacao(new Licitacao("Joaquim Trindade", 370));
+            l.addLicitacao(new Licitacao("João Almeida", 390));
+            l.addLicitacao(new Licitacao("Joaquim Trindade", 400));
+            l.addLicitacao(new Licitacao("João Almeida", 450));
+            l.addLicitacao(new Licitacao("Joaquim Trindade", 500));
+            l.addLicitacao(new Licitacao("João Almeida", 550));
+            l.addLicitacao(new Licitacao("Joaquim Trindade", 600));
             ah.addLeilao(l);
 
             // init User's licitações

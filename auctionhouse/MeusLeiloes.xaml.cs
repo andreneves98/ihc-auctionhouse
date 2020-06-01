@@ -30,10 +30,6 @@ namespace auctionhouse
 
             init_inspect_fields();
 
-            // clean prev error
-            LicitarError.Visibility = Visibility.Collapsed;
-            LicitarSuccess.Visibility = Visibility.Collapsed;
-
             InspectGrid.Visibility = Visibility.Visible;
             SearchGrid.Visibility = Visibility.Collapsed;
         }
@@ -47,6 +43,22 @@ namespace auctionhouse
             Inspect_lei_ult_licit.Text = "Última licitação: " + current_insp_leilao.highestLicitacao().ToString() + " €";
             Inspect_lei_tempo.Text = "Tempo restante: " + current_insp_leilao.timeToEnd();
             Inspect_lei_img.Source = new BitmapImage(new Uri(current_insp_leilao.imgPath, UriKind.Relative));
+            Inspect_lei_hist.Text = "";
+            int size = (current_insp_leilao.Licitacoes).Count;
+            if (size > 5)
+            {
+                for (int i = size - 1; i > size - 6; i--)
+                {
+                    Inspect_lei_hist.Text += (current_insp_leilao.Licitacoes[i].user + ": " + current_insp_leilao.Licitacoes[i].value + "€\n");
+                }
+            }
+            else
+            {
+                for (int i = size - 1; i > -1; i--)
+                {
+                    Inspect_lei_hist.Text += (current_insp_leilao.Licitacoes[i].user + ": " + current_insp_leilao.Licitacoes[i].value + "€\n");
+                }
+            }
         }
 
         public void Inspect_Back_Button_Click(object sender, System.Windows.RoutedEventArgs e)

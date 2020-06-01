@@ -53,6 +53,8 @@ namespace auctionhouse
             desc.Text = l.Descricao;
             estado.Text = l.Estado;
 
+            lei_owner.Text = l.Owner;
+
             if (l.Estado == "Aberto")
             {
                 estado.Foreground = Brushes.Green;
@@ -76,7 +78,7 @@ namespace auctionhouse
             String t = l.timeToEnd();
             if (t == "")
             {
-                tempo.Visibility = Visibility.Collapsed;
+                tempo_text.Text = "0d 00:00:00h " + t;
             }
             else
             {

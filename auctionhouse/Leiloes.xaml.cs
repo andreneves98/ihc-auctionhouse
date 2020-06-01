@@ -21,7 +21,7 @@ namespace auctionhouse
             Categ.AddHandler(ComboBox.SelectionChangedEvent, new RoutedEventHandler(Search_Options_Changed));
             SortPrice.AddHandler(ComboBox.SelectionChangedEvent, new RoutedEventHandler(Search_Options_Changed));
 
-            setLeiloes("", "Todos", "Preço asce.");
+            setLeiloes("", "Todos", "Preço menor");
         }
 
         public void Inspect_Button_Click(Leilao insp_leilao)
@@ -47,8 +47,24 @@ namespace auctionhouse
             Inspect_lei_nome.Text = current_insp_leilao.Nome;
             Inspect_lei_desc.Text = current_insp_leilao.Descricao;
             Inspect_lei_estado.Text = current_insp_leilao.Estado;
+            Inspect_lei_owner.Text = current_insp_leilao.Owner;
             LicitarOption.Visibility = Visibility.Visible;
 
+
+            double rating = ahref.getRating(current_insp_leilao.Owner);
+            int i = 0;
+            foreach (UIElement elem in Inspect_lei_rating.Children){
+                if(i < rating)
+                {
+                    ((MaterialDesignThemes.Wpf.PackIcon)elem).Foreground = Brushes.Gold;
+                }
+                else 
+                {
+                    ((MaterialDesignThemes.Wpf.PackIcon)elem).Foreground = Brushes.LightGray;
+                }
+                i++;
+            }
+                
             if (current_insp_leilao.Estado == "Aberto")
             {
                 Inspect_lei_estado.Foreground = Brushes.Green;
@@ -100,7 +116,7 @@ namespace auctionhouse
         private void setLeiloes(string words, string categ, string sortText)
         {
             int sortby = 1;
-            if (sortText == "Preço desc.")
+            if (sortText == "Preço maior")
             {
                 sortby = -1;
             }
@@ -146,6 +162,14 @@ namespace auctionhouse
             else if (value <= current_insp_leilao.getCurrentValue())
             {
                 Licitar_error_text.Text = "Insira um valor superior à ultima licitação.";
+                // display error
+                LicitarSuccess.Visibility = Visibility.Collapsed;
+                LicitarError.Visibility = Visibility.Collapsed;
+                LicitarError.Visibility = Visibility.Visible;
+            }
+            else if (value - current_insp_leilao.getCurrentValue() < 1)
+            {
+                Licitar_error_text.Text = "A licitação tem que ser superior por pelo menos 1€";
                 // display error
                 LicitarSuccess.Visibility = Visibility.Collapsed;
                 LicitarError.Visibility = Visibility.Collapsed;

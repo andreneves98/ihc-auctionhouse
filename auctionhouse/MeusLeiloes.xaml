@@ -77,9 +77,9 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <TextBlock Foreground="#FF2196F3" FontSize="20" VerticalAlignment="Center" Margin="0 0 10 0" >Ordenar por :</TextBlock>
-                        <ComboBox Name="SortPrice" Foreground="#FF2196F3" FontSize="20" Width="130" Height="30">
-                            <ComboBoxItem IsSelected="True" >Preço asce.</ComboBoxItem>
-                            <ComboBoxItem>Preço desc.</ComboBoxItem>
+                        <ComboBox Name="SortPrice" Foreground="#FF2196F3" FontSize="20" Width="140" Height="30">
+                            <ComboBoxItem IsSelected="True" >Preço menor</ComboBoxItem>
+                            <ComboBoxItem >Preço maior</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
                 </StackPanel>

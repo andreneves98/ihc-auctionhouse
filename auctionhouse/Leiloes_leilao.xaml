@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              Height="150" Width="870">
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 0 0 20">
+    <StackPanel  Width="870" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 0 0 20" Background="LightCyan">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -37,10 +37,14 @@
                     <TextBlock FontSize="15" Name="tempo" FontWeight="DemiBold">Tempo restante:</TextBlock>
                     <TextBlock FontSize="15" Name="tempo_text" ></TextBlock>
                 </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="11" FontWeight="SemiBold" Margin="0 0 5 0">Criado por:</TextBlock>
+                    <TextBlock x:Name="lei_owner" FontSize="11"></TextBlock>
+                </StackPanel>
             </StackPanel>
 
             <StackPanel Grid.Column="3" VerticalAlignment="Center">
-                <Button Width="Auto" Height="50" FontSize="30" Background="#FF2196F3" BorderThickness="0" Foreground="White" Click="Button_Click">Inspecionar</Button>
+                <Button Width="150" Height="50" FontSize="25" Background="#FF2196F3" BorderThickness="0" Foreground="White" Click="Button_Click">Inspecionar</Button>
             </StackPanel>
         </Grid>
     </StackPanel>

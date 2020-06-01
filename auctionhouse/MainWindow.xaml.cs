@@ -85,12 +85,14 @@ namespace auctionhouse
         {
             String Username = "teste";
             String Password = "teste";
+            String fullName = "Artur Filipe";
 
             // check password
-            if(TextBox_username.Text == Username && PasswordBox_text.Password == Password)
+            if (TextBox_username.Text == Username && PasswordBox_text.Password == Password)
             {
                 // change to main window
-                InitAuctionHouse("Artur Filipe");
+                InitAuctionHouse(fullName);
+                Menu_username.Text = fullName;
                 ListViewItem_Home.IsSelected = true; // first tab is Home
                 LoginGrid.Visibility = Visibility.Collapsed;
                 MainStackPanel.Visibility = Visibility.Visible;
@@ -121,6 +123,16 @@ namespace auctionhouse
             String[] Categorias = {"Electrodomésticos", "Telemóveis", "Escritório", "Automóveis"};
 
             ah = new AuctionHouse(username);
+
+            ah.addUser("Joaquim Trindade", 5);
+            ah.addUser("João Almeida", 2);
+            ah.addUser("André Silva", 1);
+            ah.addUser("Maria Alves", 5);
+            ah.addUser("Pedro Nogueira", 3);
+            ah.addUser("Artur Filipe", 4);
+            ah.addUser("Miguel Costa", 3);
+            ah.addUser("Bruno Pereira", 4);
+
             Leilao l = new Leilao("Jantes", "Jantes para um carro", "Aberto", Categorias[3], DateTime.Now.AddDays(5), "images/jantes.jpg", "Artur Filipe", 25.3);
             l.addLicitacao(new Licitacao("Joaquim Trindade", 53));
             l.addLicitacao(new Licitacao("João Almeida", 120));

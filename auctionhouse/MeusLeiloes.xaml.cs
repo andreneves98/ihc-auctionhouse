@@ -22,7 +22,7 @@ namespace auctionhouse
             SortPrice.AddHandler(ComboBox.SelectionChangedEvent, new RoutedEventHandler(Search_Options_Changed));
             Categoria.AddHandler(ComboBox.SelectionChangedEvent, new RoutedEventHandler(Search_Options_Changed));
             this.username = username;
-            setLeiloes("", "Todos", "Preço asce.");
+            setLeiloes("", "Todos", "Preço menor");
         }
 
         public void Inspect_Button_Click(Leilao insp_leilao)
@@ -88,7 +88,7 @@ namespace auctionhouse
         private void setLeiloes(string words, string categ, string sortText)
         {
             int sortby = 1;
-            if (sortText == "Preço desc.")
+            if (sortText == "Preço maior")
             {
                 sortby = -1;
             }
@@ -136,7 +136,16 @@ namespace auctionhouse
                 LicitarSuccess.Visibility = Visibility.Collapsed;
                 LicitarError.Visibility = Visibility.Collapsed;
                 LicitarError.Visibility = Visibility.Visible;*/
-            }else
+            }
+            else if (value - current_insp_leilao.getCurrentValue() < 1)
+            {
+                //Licitar_error_text.Text = "A licitação tem que ser superior por pelo menos 1€";
+                // display error
+                //LicitarSuccess.Visibility = Visibility.Collapsed;
+                //LicitarError.Visibility = Visibility.Collapsed;
+                //LicitarError.Visibility = Visibility.Visible;
+            }
+            else
             {
                 /*// clean prev error
                 LicitarError.Visibility = Visibility.Collapsed;

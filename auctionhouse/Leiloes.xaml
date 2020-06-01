@@ -36,6 +36,17 @@
                     <StackPanel Margin="0 70 0 0">
                         <TextBlock x:Name="Inspect_lei_ult_licit" FontSize="30" Foreground="#FF2196F3">Ultima licitação: 15.22 €</TextBlock>
                         <TextBlock x:Name="Inspect_lei_tempo" FontSize="30" Foreground="#FF2196F3" >Tempo restante: 1 dia, 2 horas</TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="20" Foreground="#FF2196F3" FontWeight="bold" Margin="0 0 5 0">Criado por:</TextBlock>
+                            <TextBlock x:Name="Inspect_lei_owner" FontSize="20" Foreground="#FF2196F3" Margin="0 0 10 0"></TextBlock>
+                            <StackPanel x:Name="Inspect_lei_rating" Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Star" Width="20" Height="20" Foreground="LightGray" VerticalAlignment="Center"/>
+                                <materialDesign:PackIcon Kind="Star" Width="20" Height="20" Foreground="LightGray" VerticalAlignment="Center"/>
+                                <materialDesign:PackIcon Kind="Star" Width="20" Height="20" Foreground="LightGray" VerticalAlignment="Center"/>
+                                <materialDesign:PackIcon Kind="Star" Width="20" Height="20" Foreground="LightGray" VerticalAlignment="Center"/>
+                                <materialDesign:PackIcon Kind="Star" Width="20" Height="20" Foreground="LightGray" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
 
@@ -113,9 +124,9 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <TextBlock Foreground="#FF2196F3" FontSize="20" VerticalAlignment="Center" Margin="0 0 10 0" >Ordenar por :</TextBlock>
-                        <ComboBox Name="SortPrice" Foreground="#FF2196F3" FontSize="20" Width="130" Height="30">
-                            <ComboBoxItem IsSelected="True" >Preço asce.</ComboBoxItem>
-                            <ComboBoxItem>Preço desc.</ComboBoxItem>
+                        <ComboBox Name="SortPrice" Foreground="#FF2196F3" FontSize="20" Width="140" Height="30">
+                            <ComboBoxItem IsSelected="True" >Preço menor</ComboBoxItem>
+                            <ComboBoxItem>Preço maior</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
                 </StackPanel>

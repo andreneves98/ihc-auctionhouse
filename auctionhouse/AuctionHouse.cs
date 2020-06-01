@@ -11,13 +11,24 @@ namespace auctionhouse
     public class AuctionHouse
     {
         private List<Leilao> Leiloes;
-        private List<Licitacao> User_Licitacoes;
+        private Dictionary<String,Double> usersRatings;
         private String username; // "Artur Filipe"
 
         public AuctionHouse(String first_last)
         {
             username = first_last;
             Leiloes = new List<Leilao>();
+            usersRatings = new Dictionary<String, Double>();
+        }
+        
+        public void addUser(String fullname, Double Rating) // 0-5
+        {
+            usersRatings[fullname] = Rating;
+        }
+
+        public Double getRating(String fullname)
+        {
+            return usersRatings[fullname];
         }
 
         public void addLeilao(Leilao l)

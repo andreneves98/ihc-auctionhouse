@@ -46,7 +46,14 @@ namespace auctionhouse
             Inspect_lei_nome.Text = current_insp_leilao.Nome;
             Inspect_lei_desc.Text = current_insp_leilao.Descricao;
             Inspect_lei_estado.Text = current_insp_leilao.Estado;
-            Inspect_lei_ult_licit.Text = "Última licitação: " + current_insp_leilao.highestLicitacao().ToString() + " €";
+            if (current_insp_leilao.hasLicitacoes())
+            {
+                Inspect_lei_ult_licit.Text = "Última licitação: " + current_insp_leilao.getCurrentValue().ToString() + " €";
+            }
+            else
+            {
+                Inspect_lei_ult_licit.Text = "Valor Inicial: " + current_insp_leilao.getCurrentValue().ToString() + " €";
+            }
             Inspect_lei_tempo.Text = "Tempo restante: " + current_insp_leilao.timeToEnd();
             Inspect_lei_img.Source = new BitmapImage(new Uri(current_insp_leilao.imgPath, UriKind.Relative));
         }
@@ -103,14 +110,19 @@ namespace auctionhouse
         {
             double value = 0;
             bool res = double.TryParse(licitar_text.Text, out value);
-            if (!res)
+            if (current_insp_leilao.Owner == ahref.getUsername())
+            {
+
+            }
+            else if (!res)
             {
                 Licitar_error_text.Text = "Insira um valor numérico.";
                 // display error
                 LicitarSuccess.Visibility = Visibility.Collapsed;
                 LicitarError.Visibility = Visibility.Collapsed;
                 LicitarError.Visibility = Visibility.Visible;
-            }else if (value <= current_insp_leilao.highestLicitacao())
+            }
+            else if (value <= current_insp_leilao.getCurrentValue())
             {
                 Licitar_error_text.Text = "Insira um valor superior à ultima licitação.";
                 // display error

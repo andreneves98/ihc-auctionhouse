@@ -27,7 +27,7 @@ namespace auctionhouse
             desc.Text = l.Descricao;
             estado.Text = l.Estado;
 
-            licit.Text = "Ultima licitação: " + l.highestLicitacao() + " €";
+            licit.Text = "Ultima licitação: " + l.getCurrentValue() + " €";
 
             String t = l.timeToEnd();
             if (t == "")
@@ -53,7 +53,7 @@ namespace auctionhouse
             desc.Text = l.Descricao;
             estado.Text = l.Estado;
 
-            licit.Text = "Ultima licitação: " + l.highestLicitacao() + " €";
+            licit.Text = "Ultima licitação: " + l.getCurrentValue() + " €";
 
             String t = l.timeToEnd();
             if (t == "")
@@ -79,7 +79,7 @@ namespace auctionhouse
             desc.Text = l.Descricao;
             estado.Text = l.Estado;
 
-            licit.Text = "Ultima licitação: " + l.highestLicitacao() + " €";
+            licit.Text = "Ultima licitação: " + l.getCurrentValue() + " €";
 
             String t = l.timeToEnd();
             if (t == "")

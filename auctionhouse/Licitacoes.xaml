@@ -88,15 +88,17 @@
             </Grid>
 
             <Grid Name="contentGrid" HorizontalAlignment="Left" Height="420" Margin="0,100,0,0" VerticalAlignment="Top" Width="1150">
-                <ScrollViewer HorizontalAlignment="Left" Height="410" Margin="125,0,0,0" VerticalAlignment="Top" Width="900">
-                    <StackPanel Name="Leiloes_StackPanel">
-                        <Grid x:Name="messageGrid" Height="266" Width="700" Visibility="Collapsed">
-                            <TextBlock FontSize="30" Foreground="#FF2196F3" >Ainda não tem licitações!</TextBlock>
-                        </Grid>
-                    </StackPanel>
-                </ScrollViewer>
+                <StackPanel>
+                    <TextBlock FontSize="30" Foreground="#FF2196F3" Text="As minhas licitações"/>
+                    <ScrollViewer HorizontalAlignment="Left" Height="410" Margin="125,0,0,0" VerticalAlignment="Top" Width="900">
+                        <StackPanel Name="Leiloes_StackPanel">
+                            <Grid x:Name="messageGrid" Height="266" Width="700" Visibility="Collapsed">
+                                <TextBlock FontSize="30" Foreground="#FF2196F3" >Ainda não tem licitações!</TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
             </Grid>
-            <TextBlock FontSize="30" Foreground="#FF2196F3" Text="As minhas licitações"/>
         </Grid>
     </materialDesign:TransitioningContent>
     

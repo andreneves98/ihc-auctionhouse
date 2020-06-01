@@ -103,7 +103,7 @@ namespace auctionhouse
                 }
             }
 
-            res.Sort(delegate (Leilao x, Leilao y) { return x.highestLicitacao().CompareTo(y.highestLicitacao()); });
+            res.Sort(delegate (Leilao x, Leilao y) { return x.getCurrentValue().CompareTo(y.getCurrentValue()); });
 
             if(order  == -1)
             {
@@ -124,8 +124,9 @@ namespace auctionhouse
         public String imgPath;
         public String Owner;
         public List<Licitacao> Licitacoes;
+        public double currentValue;
 
-        public Leilao(String n, String desc, String e, String categ, DateTime fim, String img, String Own)
+        public Leilao(String n, String desc, String e, String categ, DateTime fim, String img, String Own, double startValue)
         {
             Nome = n;
             Descricao = desc;
@@ -134,6 +135,7 @@ namespace auctionhouse
             DataFim = fim;
             imgPath = img;
             Owner = Own;
+            currentValue = startValue;
             Licitacoes = new List<Licitacao>();
         }
 
@@ -141,7 +143,7 @@ namespace auctionhouse
         {
             if( Licitacoes.Count > 0)
             {
-                if( l.value > Licitacoes[Licitacoes.Count-1].value)
+                if( l.value > currentValue)
                 {
                     Licitacoes.Add(l);
                 }
@@ -152,6 +154,7 @@ namespace auctionhouse
             }
             else
             {
+                currentValue = l.value;
                 Licitacoes.Add(l);
             }
 
@@ -171,16 +174,14 @@ namespace auctionhouse
             return String.Format("{0}d {1}:{2}:{3}h", diff.Days, diff.Hours, diff.Minutes, diff.Seconds);
         } 
 
-        public double highestLicitacao()
+        public double getCurrentValue()
         {
-            if(Licitacoes.Count > 0)
-            {
-                return Licitacoes[Licitacoes.Count - 1].value;
-            }
-            else
-            {
-                return 0;
-            }
+            return currentValue;
+        }
+
+        public bool hasLicitacoes()
+        {
+            return Licitacoes.Count > 0;
         }
     }
 

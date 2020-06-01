@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace auctionhouse
@@ -23,23 +24,7 @@ namespace auctionhouse
             leiloes_window = window;
             leilao = l;
 
-            nome.Text = l.Nome;
-            desc.Text = l.Descricao;
-            estado.Text = l.Estado;
-
-            licit.Text = "Ultima licitação: " + l.getCurrentValue() + " €";
-
-            String t = l.timeToEnd();
-            if (t == "")
-            {
-                tempo.Text = "";
-            }
-            else
-            {
-                tempo.Text = "Tempo restante: " + t;
-            }
-
-            img.Source = new BitmapImage(new Uri(l.imgPath, UriKind.Relative));
+            initLeilaoCard(l);
         }
 
         public Leiloes_leilao(Licitacoes window, Leilao l)
@@ -49,23 +34,7 @@ namespace auctionhouse
             licitacoes_window = window;
             leilao = l;
 
-            nome.Text = l.Nome;
-            desc.Text = l.Descricao;
-            estado.Text = l.Estado;
-
-            licit.Text = "Ultima licitação: " + l.getCurrentValue() + " €";
-
-            String t = l.timeToEnd();
-            if (t == "")
-            {
-                tempo.Text = "";
-            }
-            else
-            {
-                tempo.Text = "Tempo restante: " + t;
-            }
-
-            img.Source = new BitmapImage(new Uri(l.imgPath, UriKind.Relative));
+            initLeilaoCard(l);
         }
 
         public Leiloes_leilao(MeusLeiloes window, Leilao l)
@@ -75,20 +44,43 @@ namespace auctionhouse
             Meusleiloes_window = window;
             Meuleilao = l;
 
+            initLeilaoCard(l);
+        }
+
+        private void initLeilaoCard(Leilao l)
+        {
             nome.Text = l.Nome;
             desc.Text = l.Descricao;
             estado.Text = l.Estado;
 
-            licit.Text = "Ultima licitação: " + l.getCurrentValue() + " €";
+            if (l.Estado == "Aberto")
+            {
+                estado.Foreground = Brushes.Green;
+            }
+            else // Fechado
+            {
+                estado.Foreground = Brushes.PaleVioletRed;
+            }
+
+            if (l.hasLicitacoes())
+            {
+                licit.Text = "Ultima licitação:";
+                licit_text.Text = " " + l.getCurrentValue() + " €";
+            }
+            else
+            {
+                licit.Text = "Valor inicial:";
+                licit_text.Text = " " + l.getCurrentValue() + " €";
+            }
 
             String t = l.timeToEnd();
             if (t == "")
             {
-                tempo.Text = "";
+                tempo.Visibility = Visibility.Collapsed;
             }
             else
             {
-                tempo.Text = "Tempo restante: " + t;
+                tempo_text.Text = " " + t;
             }
 
             img.Source = new BitmapImage(new Uri(l.imgPath, UriKind.Relative));

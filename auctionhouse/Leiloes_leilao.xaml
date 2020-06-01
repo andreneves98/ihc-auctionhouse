@@ -23,14 +23,20 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="0 0 40 0" Width="210">
-                <TextBlock FontSize="15" Name="nome" ></TextBlock>
+                <TextBlock FontSize="15" Name="nome" FontWeight="bold"></TextBlock>
                 <TextBlock FontSize="15" Name="desc"></TextBlock>
-                <TextBlock FontSize="15" Name="estado"></TextBlock>
+                <TextBlock FontSize="15" Name="estado" FontWeight="DemiBold"></TextBlock>
             </StackPanel>
 
             <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="0 0 40 0" Width="210">
-                <TextBlock FontSize="15" Name="licit" ></TextBlock>
-                <TextBlock FontSize="15" Name="tempo"></TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="15" Name="licit" FontWeight="DemiBold">Ultima licitação:</TextBlock>
+                    <TextBlock FontSize="15" Name="licit_text"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="15" Name="tempo" FontWeight="DemiBold">Tempo restante:</TextBlock>
+                    <TextBlock FontSize="15" Name="tempo_text" ></TextBlock>
+                </StackPanel>
             </StackPanel>
 
             <StackPanel Grid.Column="3" VerticalAlignment="Center">

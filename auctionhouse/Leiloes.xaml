@@ -48,7 +48,7 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Grid.Column="1">
-                    <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 150 0 0" Height="170" Width="250">
+                    <StackPanel x:Name="LicitarOption" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 150 0 0" Height="170" Width="250">
                         <StackPanel Margin="0 0 0 10">
                             <TextBlock FontSize="20" Foreground="#FF2196F3" >Insira quantia:</TextBlock>
                         </StackPanel>

@@ -121,7 +121,6 @@ namespace auctionhouse
 
                 Licitacao licit = new Licitacao(ahref.getUsername(), value);
                 current_insp_leilao.addLicitacao(licit); // add to Leilao
-                ahref.addUser_Licitacoes(licit); // add to User's list of licitações
 
                 init_inspect_fields();
             }

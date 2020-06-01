@@ -18,14 +18,7 @@ namespace auctionhouse
         {
             username = first_last;
             Leiloes = new List<Leilao>();
-            User_Licitacoes = new List<Licitacao>();
         }
-
-        public void addUser_Licitacoes(Licitacao l)
-        {
-            User_Licitacoes.Add(l);
-        }
-
 
         public void addLeilao(Leilao l)
         {
@@ -37,12 +30,7 @@ namespace auctionhouse
             return username;
         }
 
-        public Licitacao[] getUser_Licitacoes()
-        {
-            return User_Licitacoes.ToArray();
-        }
-
-        public Leilao[] getUserLeiloes(String user)
+        public Leilao[] getUserLeiloes(String user) // leiloes onde user licitou
         {
             List<Leilao> userLeiloes = new List<Leilao>();
             foreach(Leilao lei in Leiloes)
@@ -52,6 +40,7 @@ namespace auctionhouse
                     if(lic.user == user)
                     {
                         userLeiloes.Add(lei);
+                        break;
                     }  
                 }
             }
@@ -145,6 +134,7 @@ namespace auctionhouse
             {
                 if( l.value > currentValue)
                 {
+                    currentValue = l.value;
                     Licitacoes.Add(l);
                 }
                 else

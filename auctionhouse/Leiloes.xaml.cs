@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace auctionhouse
@@ -46,15 +47,31 @@ namespace auctionhouse
             Inspect_lei_nome.Text = current_insp_leilao.Nome;
             Inspect_lei_desc.Text = current_insp_leilao.Descricao;
             Inspect_lei_estado.Text = current_insp_leilao.Estado;
+            LicitarOption.Visibility = Visibility.Visible;
+
+            if (current_insp_leilao.Estado == "Aberto")
+            {
+                Inspect_lei_estado.Foreground = Brushes.Green;
+                Inspect_lei_tempo.Text = "Tempo restante: " + current_insp_leilao.timeToEnd();
+            }
+            else // Fechado
+            {
+                Inspect_lei_estado.Foreground = Brushes.PaleVioletRed;
+                Inspect_lei_tempo.Text = "Tempo restante: " + "0d 00:00:00h";
+
+                // hide
+                LicitarOption.Visibility = Visibility.Collapsed;
+            }
+
             if (current_insp_leilao.hasLicitacoes())
             {
                 Inspect_lei_ult_licit.Text = "Última licitação: " + current_insp_leilao.getCurrentValue().ToString() + " €";
             }
             else
             {
-                Inspect_lei_ult_licit.Text = "Valor Inicial: " + current_insp_leilao.getCurrentValue().ToString() + " €";
+                Inspect_lei_ult_licit.Text = "Valor inicial: " + current_insp_leilao.getCurrentValue().ToString() + " €";
             }
-            Inspect_lei_tempo.Text = "Tempo restante: " + current_insp_leilao.timeToEnd();
+            
             Inspect_lei_img.Source = new BitmapImage(new Uri(current_insp_leilao.imgPath, UriKind.Relative));
         }
 
@@ -112,7 +129,11 @@ namespace auctionhouse
             bool res = double.TryParse(licitar_text.Text, out value);
             if (current_insp_leilao.Owner == ahref.getUsername())
             {
-
+                Licitar_error_text.Text = "Não pode licitar no seu leilão.";
+                // display error
+                LicitarSuccess.Visibility = Visibility.Collapsed;
+                LicitarError.Visibility = Visibility.Collapsed;
+                LicitarError.Visibility = Visibility.Visible;
             }
             else if (!res)
             {
@@ -144,8 +165,6 @@ namespace auctionhouse
 
                 Licitacao licit = new Licitacao(ahref.getUsername(), value);
                 current_insp_leilao.addLicitacao(licit); // add to Leilao
-                ahref.addUser_Licitacoes(licit); // add to User's list of licitações
-
                 init_inspect_fields();
             }
         }

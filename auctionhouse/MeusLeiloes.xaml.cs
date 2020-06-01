@@ -155,7 +155,7 @@ namespace auctionhouse
                 TextBox_desc.Text = "";
                 TextBox_value.Text = "";
 
-                Leilao l = l = new Leilao(nome, desc, "Aberto", category, DateTime.Now.AddDays(2), "images/maquina.jpg", username);
+                Leilao l = l = new Leilao(nome, desc, "Aberto", category, DateTime.Now.AddDays(2), "images/maquina.jpg", username, 20);
                 ahref.addLeilao(l);
 
                 SearchGrid.Visibility = Visibility.Visible;

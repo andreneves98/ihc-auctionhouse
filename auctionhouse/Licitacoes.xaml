@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              Width="1150" Height="520">
-    
+
     <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
         <Grid>
             <Grid  x:Name="InspectGrid" Visibility="Collapsed">
@@ -88,12 +88,16 @@
             </Grid>
 
             <Grid Name="contentGrid" HorizontalAlignment="Left" Height="420" Margin="0,100,0,0" VerticalAlignment="Top" Width="1150">
-                <StackPanel>
-                    <TextBlock FontSize="30" Foreground="#FF2196F3" Text="As minhas licitações"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="33*"/>
+                    <ColumnDefinition Width="542*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Margin="0,-57,0,0" Grid.ColumnSpan="2">
+                    <TextBlock FontSize="30" Foreground="#FF2196F3" Text="As minhas licitações" Height="37"/>
                     <ScrollViewer HorizontalAlignment="Left" Height="410" Margin="125,0,0,0" VerticalAlignment="Top" Width="900">
-                        <StackPanel Name="Leiloes_StackPanel">
+                        <StackPanel x:Name="Leiloes_StackPanel">
                             <Grid x:Name="messageGrid" Height="266" Width="700" Visibility="Collapsed">
-                                <TextBlock FontSize="30" Foreground="#FF2196F3" >Ainda não tem licitações!</TextBlock>
+                                <TextBlock FontSize="30" Foreground="#FF2196F3" ><Run Text="Ainda não tem licitações!"/></TextBlock>
                             </Grid>
                         </StackPanel>
                     </ScrollViewer>
@@ -101,5 +105,5 @@
             </Grid>
         </Grid>
     </materialDesign:TransitioningContent>
-    
+
 </UserControl>

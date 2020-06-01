@@ -51,7 +51,7 @@
                 </StackPanel>
             </Grid>
 
-            <Grid x:Name="SearchGrid">
+            <Grid x:Name="SearchGrid" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition />
@@ -86,12 +86,35 @@
 
 
                 <Grid Grid.Row="1" HorizontalAlignment="Left" Width="1150">
-                    <ScrollViewer HorizontalAlignment="Center" VerticalContentAlignment="Center" Width="900" Margin="10 0 0 10">
+                    <ScrollViewer HorizontalAlignment="Center" VerticalContentAlignment="Center" Width="900" Margin="130,0,120,87">
                         <StackPanel Name="Leiloes_StackPanel">
 
                         </StackPanel>
                     </ScrollViewer>
+                    <Button Width="Auto" FontSize="30" Background="#FF2196F3" BorderThickness="0" Foreground="White" Click="add_leilao" Margin="438,354,438,20">Adicionar Leilão</Button>
                 </Grid>
+            </Grid>
+            <Grid x:Name="AddGrid" Visibility="Collapsed">
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <Button x:Name="AddBack" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5 5 0 0" BorderThickness="0" Background="Transparent" Foreground="#FF2196F3" Width="50" Height="50" Click="Inspect_Back_Button_Click">
+                        <materialDesign:PackIcon Kind="ArrowBackCircle" Width="50" Height="50" />
+                    </Button>
+                </StackPanel>
+                <TextBlock VerticalAlignment="Center" Name="TextBox_name_hint" Text=" Nome do Leilão" FontSize="20" Foreground="LightBlue" Margin="438,48,438.4,432" Height="40" />
+                <TextBox Name="TextBox_name" VerticalContentAlignment="Center" FontSize="20" Foreground="#FF2196F3" Background="Transparent" TextChanged="name_TextChanged" Margin="438,48,438.4,432"/>
+                <TextBlock VerticalAlignment="Center" Name="TextBox_desc_hint" Text=" Descrição" FontSize="20" Foreground="LightBlue" Margin="438,118,438.4,362" Height="40" />
+                <TextBox Name="TextBox_desc" VerticalContentAlignment="Center" FontSize="20" Foreground="#FF2196F3" Background="Transparent" TextChanged="desc_TextChanged" Margin="438,118,438.4,362"/>
+                <TextBlock VerticalAlignment="Center" Name="TextBox_value_hint" Text=" 00.00" FontSize="20" Foreground="LightBlue" Margin="438,189,438.4,291" Height="40" />
+                <TextBox Name="TextBox_value" VerticalContentAlignment="Center" FontSize="20" Foreground="#FF2196F3" Background="Transparent" TextChanged="value_TextChanged" Margin="438,189,438.4,291"/>
+                <ComboBox Name="Categoria" Foreground="#FF2196F3" FontSize="20" Width="200" Height="30">
+                    <ComboBoxItem IsSelected="True" >Categorias</ComboBoxItem>
+                    <ComboBoxItem>Electrodomésticos</ComboBoxItem>
+                    <ComboBoxItem>Telemóveis</ComboBoxItem>
+                    <ComboBoxItem>Escritório</ComboBoxItem>
+                    <ComboBoxItem>Automóveis</ComboBoxItem>
+                </ComboBox>
+
+                <Button Width="Auto" FontSize="30" Background="#FF2196F3" BorderThickness="0" Foreground="White" Click="add_leilao_confirm" Margin="438,449,438.4,20">Submit</Button>
             </Grid>
 
         </Grid>

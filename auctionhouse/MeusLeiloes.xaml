@@ -105,7 +105,7 @@
                 </Grid>
             </Grid>
 
-            <Grid x:Name="AddGrid" Visibility="Visible">
+            <Grid x:Name="AddGrid" Visibility="Collapsed">
                 <StackPanel Grid.Row="0" Grid.Column="0">
                     <Button x:Name="AddBack" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5 5 0 0" BorderThickness="0" Background="Transparent" Foreground="#FF2196F3" Width="50" Height="50" Click="Inspect_Back_Button_Click">
                         <materialDesign:PackIcon Kind="ArrowBackCircle" Width="50" Height="50" />
@@ -126,7 +126,7 @@
                     <ComboBoxItem>Automóveis</ComboBoxItem>
                 </ComboBox>
 
-                <TextBlock Text="Número de Dias:" FontSize="25" HorizontalAlignment="Center" Margin="347,311,530.4,179" Foreground="#FF2196F3" Width="273" />
+                <TextBlock Text="Prazo:" FontSize="25" HorizontalAlignment="Center" Margin="421,311,456,179" Foreground="#FF2196F3" Width="273" />
                 <ComboBox Name="DayCount" Foreground="#FF2196F3" FontSize="20" Width="200" Height="30" Margin="556,311,394.4,179">
                     <ComboBoxItem>1 Dia</ComboBoxItem>
                     <ComboBoxItem>2 Dias</ComboBoxItem>
@@ -138,6 +138,7 @@
                 </ComboBox>
                 <TextBlock Name="img_Path" VerticalAlignment="Center" FontSize="20" Foreground="#FF2196F3" Background="Transparent" Margin="438,383,394.4,110"/>
                 <Button Width="Auto" FontSize="15" Background="#FF2196F3" BorderThickness="0" Foreground="White" Click="upload_button_Click" Margin="230,380,720.4,110">Browse</Button>
+                <TextBlock Height="30" Text="Imagem:" FontSize="23" HorizontalAlignment="Center" Margin="137,380,857,110" Foreground="#FF2196F3" Width="156" />
 
 
 
@@ -195,7 +196,7 @@
                         </Border>
                     </materialDesign:TransitioningContent>
                 </Grid>
-                
+
                 <Button Width="Auto" FontSize="30" Background="#FF2196F3" BorderThickness="0" Foreground="White" Click="add_leilao_confirm" Margin="438,449,438.4,20">Submit</Button>
             </Grid>
 

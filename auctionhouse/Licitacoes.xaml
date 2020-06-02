@@ -88,18 +88,19 @@
                 </StackPanel>
             </Grid>
 
+            <Grid x:Name="messageGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+                <TextBlock FontSize="30" Foreground="#FF2196F3" ><Run Text="Ainda não tem licitações!"/></TextBlock>
+            </Grid>
+
             <Grid Name="contentGrid" HorizontalAlignment="Left" Height="420" Margin="0,100,0,0" VerticalAlignment="Top" Width="1150">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="33*"/>
                     <ColumnDefinition Width="542*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Margin="0,-74,0,0" Grid.ColumnSpan="2">
-                    <TextBlock FontSize="30" Foreground="#FF2196F3" Text="As minhas licitações" Height="37"/>
+                    <TextBlock FontSize="30" Foreground="#FF2196F3" Text="As minhas licitações" Height="37" HorizontalAlignment="Left" Margin="125 0 0 0"/>
                     <ScrollViewer HorizontalAlignment="Left" Height="410" Margin="125,10,0,0" VerticalAlignment="Top" Width="900">
                         <StackPanel x:Name="Leiloes_StackPanel">
-                            <Grid x:Name="messageGrid" Height="266" Width="700" Visibility="Collapsed">
-                                <TextBlock FontSize="30" Foreground="#FF2196F3" ><Run Text="Ainda não tem licitações!"/></TextBlock>
-                            </Grid>
                         </StackPanel>
                     </ScrollViewer>
                 </StackPanel>

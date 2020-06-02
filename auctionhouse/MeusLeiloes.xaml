@@ -79,8 +79,8 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <TextBlock Foreground="#FF2196F3" FontSize="20" VerticalAlignment="Center" Margin="0 0 10 0" >Ordenar por :</TextBlock>
                         <ComboBox Name="SortPrice" Foreground="#FF2196F3" FontSize="20" Width="130" Height="30">
-                            <ComboBoxItem IsSelected="True" >Preço asce.</ComboBoxItem>
-                            <ComboBoxItem>Preço desc.</ComboBoxItem>
+                            <ComboBoxItem IsSelected="True" >Preço menor</ComboBoxItem>
+                            <ComboBoxItem>Preço maior</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
                 </StackPanel>
@@ -105,17 +105,17 @@
                 </Grid>
             </Grid>
 
-            <Grid x:Name="AddGrid" Visibility="Collapsed">
+            <Grid x:Name="AddGrid" Visibility="Visible">
                 <StackPanel Grid.Row="0" Grid.Column="0">
                     <Button x:Name="AddBack" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5 5 0 0" BorderThickness="0" Background="Transparent" Foreground="#FF2196F3" Width="50" Height="50" Click="Inspect_Back_Button_Click">
                         <materialDesign:PackIcon Kind="ArrowBackCircle" Width="50" Height="50" />
                     </Button>
                 </StackPanel>
-                <TextBlock VerticalAlignment="Center" Name="TextBox_name_hint" Text=" Nome do Leilão" FontSize="20" Foreground="LightBlue" Margin="438,48,438.4,432" Height="40" />
+                <TextBlock VerticalAlignment="Center" Name="TextBox_name_hint" Text=" Nome do Leilão" FontSize="20" Foreground="LightBlue" Margin="438,60,438.4,432" Height="40" />
                 <TextBox Name="TextBox_name" VerticalContentAlignment="Center" FontSize="20" Foreground="#FF2196F3" Background="Transparent" TextChanged="name_TextChanged" Margin="438,48,438.4,432"/>
-                <TextBlock VerticalAlignment="Center" Name="TextBox_desc_hint" Text=" Descrição" FontSize="20" Foreground="LightBlue" Margin="438,118,438.4,362" Height="40" />
+                <TextBlock VerticalAlignment="Center" Name="TextBox_desc_hint" Text=" Descrição" FontSize="20" Foreground="LightBlue" Margin="438,130,438.4,362" Height="40" />
                 <TextBox Name="TextBox_desc" VerticalContentAlignment="Center" FontSize="20" Foreground="#FF2196F3" Background="Transparent" TextChanged="desc_TextChanged" Margin="438,118,438.4,362"/>
-                <TextBlock VerticalAlignment="Center" Name="TextBox_value_hint" Text=" 00.00" FontSize="20" Foreground="LightBlue" Margin="438,189,438.4,291" Height="40" />
+                <TextBlock VerticalAlignment="Center" Name="TextBox_value_hint" Text=" 00.00€" FontSize="20" Foreground="LightBlue" Margin="438,202,438.4,291" Height="40" />
                 <TextBox Name="TextBox_value" VerticalContentAlignment="Center" FontSize="20" Foreground="#FF2196F3" Background="Transparent" TextChanged="value_TextChanged" Margin="438,189,438.4,291"/>
 
                 <TextBlock Text="Categoria:" FontSize="25" HorizontalAlignment="Center" Margin="421,250,572.4,214" Foreground="#FF2196F3" Width="157" />

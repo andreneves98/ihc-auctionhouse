@@ -140,6 +140,7 @@ namespace auctionhouse
 
             l = new Leilao("Microondas", "microondas novo", "Aberto", Categorias[0], DateTime.Now.AddDays(10), "images/microondas.jpg", "Bruno Pereira", 59.99);
             l.addLicitacao(new Licitacao("Maria Alves", 70));
+            l.addLicitacao(new Licitacao("Artur Filipe", 75)); // uncomment to show empty licitacoes
             l.addLicitacao(new Licitacao("Pedro Nogueira", 90));
             ah.addLeilao(l);
 

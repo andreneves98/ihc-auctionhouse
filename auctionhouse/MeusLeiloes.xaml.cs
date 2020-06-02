@@ -24,7 +24,7 @@ namespace auctionhouse
             Categoria.AddHandler(ComboBox.SelectionChangedEvent, new RoutedEventHandler(Search_Options_Changed));
             DayCount.AddHandler(ComboBox.SelectionChangedEvent, new RoutedEventHandler(Search_Options_Changed));
             this.username = username;
-            setLeiloes("", "Todos", "Preço asce.");
+            setLeiloes("", "Todos", "Preço menor");
         }
 
         public void Inspect_Button_Click(Leilao insp_leilao)
@@ -111,7 +111,7 @@ namespace auctionhouse
         private void setLeiloes(string words, string categ, string sortText)
         {
             int sortby = 1;
-            if (sortText == "Preço desc.")
+            if (sortText == "Preço maior")
             {
                 sortby = -1;
             }

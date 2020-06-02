@@ -63,9 +63,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Window_licitar.xaml.cs">
-      <DependentUpon>Window_licitar.xaml</DependentUpon>
-    </Compile>
     <Page Include="Leiloes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -105,10 +102,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Perfil.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window_licitar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

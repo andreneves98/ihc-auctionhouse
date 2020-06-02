@@ -106,20 +106,24 @@ namespace auctionhouse
             }
             else
             {
-                // clean prev error
-                LicitarError.Visibility = Visibility.Collapsed;
-                LicitarSuccess.Visibility = Visibility.Collapsed;
+                MessageBoxResult m_res = MessageBox.Show("Confirmar Licitação de " + value + "€ ?", "Confirmar", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (m_res == MessageBoxResult.Yes)
+                {
+                    // clean prev error
+                    LicitarError.Visibility = Visibility.Collapsed;
+                    LicitarSuccess.Visibility = Visibility.Collapsed;
 
-                // display success
-                LicitarSuccess.Visibility = Visibility.Visible;
+                    // display success
+                    LicitarSuccess.Visibility = Visibility.Visible;
 
-                // clear value
-                licitar_text.Text = "";
+                    // clear value
+                    licitar_text.Text = "";
 
-                Licitacao licit = new Licitacao(ahref.getUsername(), value);
-                current_insp_leilao.addLicitacao(licit); // add to Leilao
+                    Licitacao licit = new Licitacao(ahref.getUsername(), value);
+                    current_insp_leilao.addLicitacao(licit); // add to Leilao
 
-                init_inspect_fields();
+                    init_inspect_fields();
+                }
             }
         }
     }

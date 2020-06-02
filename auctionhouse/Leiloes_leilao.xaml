@@ -41,11 +41,15 @@
                     <TextBlock FontSize="11" FontWeight="SemiBold" Margin="0 0 5 0">Criado por:</TextBlock>
                     <TextBlock x:Name="lei_owner" FontSize="11"></TextBlock>
                 </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="status" FontSize="11" FontWeight="DemiBold" Margin="0,5,0,0" Text="Status" Visibility="Collapsed"/>
+                </StackPanel>
             </StackPanel>
 
             <StackPanel Grid.Column="3" VerticalAlignment="Center">
                 <Button Width="150" Height="50" FontSize="25" Background="#FF2196F3" BorderThickness="0" Foreground="White" Click="Button_Click">Inspecionar</Button>
             </StackPanel>
+            
         </Grid>
     </StackPanel>
 </UserControl>

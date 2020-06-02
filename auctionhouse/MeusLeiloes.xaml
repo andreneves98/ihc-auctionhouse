@@ -33,8 +33,8 @@
 
                 <StackPanel Grid.Row="0" Grid.Column="1">
                     <StackPanel Margin="0 70 0 0">
-                        <TextBlock x:Name="Inspect_lei_ult_licit" FontSize="30" Foreground="#FF2196F3">Ultima licitação: 15.22 €</TextBlock>
-                        <TextBlock x:Name="Inspect_lei_tempo" FontSize="30" Foreground="#FF2196F3" >Tempo restante: 1 dia, 2 horas</TextBlock>
+                        <TextBlock x:Name="Inspect_lei_ult_licit" FontSize="30" Foreground="Black">Ultima licitação: 15.22 €</TextBlock>
+                        <TextBlock x:Name="Inspect_lei_tempo" FontSize="30" Foreground="Black" >Tempo restante: 1 dia, 2 horas</TextBlock>
                     </StackPanel>
                 </StackPanel>
 

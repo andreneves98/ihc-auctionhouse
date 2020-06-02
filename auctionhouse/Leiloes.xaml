@@ -34,8 +34,8 @@
 
                 <StackPanel Grid.Row="0" Grid.Column="1">
                     <StackPanel Margin="0 70 0 0">
-                        <TextBlock x:Name="Inspect_lei_ult_licit" FontSize="30" Foreground="#FF2196F3">Ultima licitação: 15.22 €</TextBlock>
-                        <TextBlock x:Name="Inspect_lei_tempo" FontSize="30" Foreground="#FF2196F3" >Tempo restante: 1 dia, 2 horas</TextBlock>
+                        <TextBlock x:Name="Inspect_lei_ult_licit" FontSize="30" Foreground="Black">Ultima licitação: 15.22 €</TextBlock>
+                        <TextBlock x:Name="Inspect_lei_tempo" FontSize="30" Foreground="Black" >Tempo restante: 1 dia, 2 horas</TextBlock>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontSize="20" Foreground="#FF2196F3" FontWeight="bold" Margin="0 0 5 0">Criado por:</TextBlock>
                             <TextBlock x:Name="Inspect_lei_owner" FontSize="20" Foreground="#FF2196F3" Margin="0 0 10 0"></TextBlock>
@@ -47,6 +47,7 @@
                                 <materialDesign:PackIcon Kind="Star" Width="20" Height="20" Foreground="LightGray" VerticalAlignment="Center"/>
                             </StackPanel>
                         </StackPanel>
+                        <TextBlock x:Name="Inspect_status" FontSize="25" FontWeight="DemiBold" Margin="1,5,0,0" Text="Status" Visibility="Collapsed"/>
                     </StackPanel>
                 </StackPanel>
 

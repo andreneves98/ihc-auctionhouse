@@ -16,6 +16,9 @@ namespace auctionhouse
         private Licitacoes licitacoes_window;
         private Leilao Meuleilao;
         private MeusLeiloes Meusleiloes_window;
+        private AuctionHouse ahref;
+        private String username;
+        private String bidstatus;
 
         public Leiloes_leilao(Leiloes window, Leilao l)
         {
@@ -23,16 +26,35 @@ namespace auctionhouse
 
             leiloes_window = window;
             leilao = l;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            ahref = mainWindow.ah;
 
             initLeilaoCard(l);
         }
 
-        public Leiloes_leilao(Licitacoes window, Leilao l)
+        public Leiloes_leilao(Leiloes window, Leilao l, String bidstatus)
+        {
+            InitializeComponent();
+
+            leiloes_window = window;
+            leilao = l;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            ahref = mainWindow.ah;
+            this.bidstatus = bidstatus;
+
+            initLeilaoCard(l);
+        }
+
+        public Leiloes_leilao(Licitacoes window, Leilao l, String username, String bidstatus)
         {
             InitializeComponent();
 
             licitacoes_window = window;
             leilao = l;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            ahref = mainWindow.ah;
+            this.username = username;
+            this.bidstatus = bidstatus;
 
             initLeilaoCard(l);
         }
@@ -43,6 +65,8 @@ namespace auctionhouse
 
             Meusleiloes_window = window;
             Meuleilao = l;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            ahref = mainWindow.ah;
 
             initLeilaoCard(l);
         }
@@ -58,6 +82,31 @@ namespace auctionhouse
             if (l.Estado == "Aberto")
             {
                 estado.Foreground = Brushes.Green;
+                if(bidstatus == null)
+                {
+                    status.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    if (bidstatus.Equals("leading"))
+                    {
+                        status.Text = "À frente";
+                        status.Foreground = Brushes.Green;
+                        status.Visibility = Visibility.Visible;
+                    }
+                    else if(bidstatus.Equals("losing"))
+                    {
+                        status.Text = "Ultrapassado";
+                        status.Foreground = Brushes.Red;
+                        status.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        status.Visibility = Visibility.Collapsed;
+                    }
+                }
+                
+                
             }
             else // Fechado
             {

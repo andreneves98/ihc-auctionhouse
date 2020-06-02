@@ -34,8 +34,9 @@
 
                 <StackPanel Grid.Row="0" Grid.Column="1">
                     <StackPanel Margin="0 70 0 0">
-                        <TextBlock x:Name="Inspect_lei_ult_licit" FontSize="30" Foreground="#FF2196F3">Ultima licitação: 15.22 €</TextBlock>
-                        <TextBlock x:Name="Inspect_lei_tempo" FontSize="30" Foreground="#FF2196F3" >Tempo restante: 1 dia, 2 horas</TextBlock>
+                        <TextBlock x:Name="Inspect_lei_ult_licit" FontSize="30" Foreground="Black">Ultima licitação: 15.22 €</TextBlock>
+                        <TextBlock x:Name="Inspect_lei_tempo" FontSize="30" Foreground="Black" >Tempo restante: 1 dia, 2 horas</TextBlock>
+                        <TextBlock x:Name="Inspect_status" FontSize="25" FontWeight="DemiBold" Margin="1,5,0,0" Text="Status" Visibility="Collapsed"/>
                     </StackPanel>
                 </StackPanel>
 
@@ -92,9 +93,9 @@
                     <ColumnDefinition Width="33*"/>
                     <ColumnDefinition Width="542*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Margin="0,-57,0,0" Grid.ColumnSpan="2">
+                <StackPanel Margin="0,-74,0,0" Grid.ColumnSpan="2">
                     <TextBlock FontSize="30" Foreground="#FF2196F3" Text="As minhas licitações" Height="37"/>
-                    <ScrollViewer HorizontalAlignment="Left" Height="410" Margin="125,0,0,0" VerticalAlignment="Top" Width="900">
+                    <ScrollViewer HorizontalAlignment="Left" Height="418" Margin="125,30,0,0" VerticalAlignment="Top" Width="900">
                         <StackPanel x:Name="Leiloes_StackPanel">
                             <Grid x:Name="messageGrid" Height="266" Width="700" Visibility="Collapsed">
                                 <TextBlock FontSize="30" Foreground="#FF2196F3" ><Run Text="Ainda não tem licitações!"/></TextBlock>

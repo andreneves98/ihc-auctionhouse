@@ -10,13 +10,15 @@ namespace auctionhouse
     {
         private AuctionHouse ahref;
         private Leilao current_insp_leilao;
+        private String username;
 
-        public Licitacoes()
+        public Licitacoes(String username)
         {
             InitializeComponent();
 
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             ahref = mainWindow.ah;
+            this.username = username;
             setLicitacoes();
         }
 
@@ -37,6 +39,7 @@ namespace auctionhouse
             }
         }
 
+        
         public void Inspect_Button_Click(Leilao insp_leilao)
         {
             current_insp_leilao = insp_leilao;
@@ -67,15 +70,9 @@ namespace auctionhouse
 
         public void Inspect_Back_Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            // refresh leiloes list
-            /*string words = SearchWords.Text;
-            string categ = ((ComboBoxItem)Categ.SelectedItem).Content.ToString();
-            string sortText = ((ComboBoxItem)SortPrice.SelectedItem).Content.ToString();
-
-            setLeiloes(words, categ, sortText);*/
-
             contentGrid.Visibility = Visibility.Visible;
             InspectGrid.Visibility = Visibility.Collapsed;
+            setLicitacoes();
         }
 
         private void licitar_text_TextChanged(object sender, TextChangedEventArgs e)

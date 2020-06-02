@@ -51,7 +51,7 @@ namespace auctionhouse
                     break;
                 case 2: // Licitações
                     ContentGrid.Children.Clear();
-                    ContentGrid.Children.Add(new Licitacoes());
+                    ContentGrid.Children.Add(new Licitacoes("Artur Filipe"));
                     break;
                 case 3: // Meus Leilões
                     ContentGrid.Children.Clear();

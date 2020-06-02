@@ -55,22 +55,22 @@
             </StackPanel>
         </Grid>
 
-        <StackPanel Visibility="Collapsed" Name="MainStackPanel" >
+        <StackPanel Visibility="Visible" Name="MainStackPanel" >
             <Grid VerticalAlignment="Top" Height="100">
-                <ListView Name="ListViewMenu" Background="WhiteSmoke" Foreground="#FF2196F3" BorderThickness="0" SelectionChanged="ListView_SelectionChanged">
+                <StackPanel Orientation="Horizontal" Background="WhiteSmoke">
+                    <StackPanel Orientation="Horizontal" Margin="0 0 320 0">
+                        <materialDesign:PackIcon Kind="Gavel" Width="30" Height="30" Foreground="#FF2196F3" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="AuctionHouse" FontSize="25" Foreground="#FF2196F3" VerticalAlignment="Center" FontWeight="Bold" Margin="5 0"/>
+                    </StackPanel>
+
+                    <ListView Name="ListViewMenu" Background="WhiteSmoke" Foreground="#FF2196F3" BorderThickness="0" SelectionChanged="ListView_SelectionChanged">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal"></StackPanel>
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
 
-                    <ListViewItem Height="60" Margin="0 0 310 0" Name="ListViewItem_Home">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="AuctionHouse" FontSize="25" VerticalAlignment="Center" Margin="10 0"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
+                        <ListViewItem Height="60" Name="ListViewItem_Leiloes">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Search" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
                             <TextBlock Text="Leilões" FontSize="25" VerticalAlignment="Center" Margin="10 0"/>
@@ -96,6 +96,7 @@
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
+                </StackPanel>
 
             </Grid>
             <Grid x:Name="ContentGrid" Margin="10 10 10 0" Background="White" VerticalAlignment="Top" Width="1150" Height="520">

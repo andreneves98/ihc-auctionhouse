@@ -41,23 +41,19 @@ namespace auctionhouse
             int index = ListViewMenu.SelectedIndex;
 
             switch (index){
-                case 0: // Home
-                    ContentGrid.Children.Clear();
-                    ContentGrid.Children.Add(new Home());
-                    break;
-                case 1: // Leilões
+                case 0: // Leilões
                     ContentGrid.Children.Clear();
                     ContentGrid.Children.Add(new Leiloes());
                     break;
-                case 2: // Licitações
+                case 1: // Licitações
                     ContentGrid.Children.Clear();
                     ContentGrid.Children.Add(new Licitacoes("Artur Filipe"));
                     break;
-                case 3: // Meus Leilões
+                case 2: // Meus Leilões
                     ContentGrid.Children.Clear();
                     ContentGrid.Children.Add(new MeusLeiloes("Artur Filipe"));
                     break;
-                case 4: // Perfil
+                case 3: // Perfil
                     ContentGrid.Children.Clear();
                     ContentGrid.Children.Add(new Perfil());
                     break;
@@ -93,7 +89,7 @@ namespace auctionhouse
                 // change to main window
                 InitAuctionHouse(fullName);
                 Menu_username.Text = fullName;
-                ListViewItem_Home.IsSelected = true; // first tab is Home
+                ListViewItem_Leiloes.IsSelected = true; // first tab is Leiloes
                 LoginGrid.Visibility = Visibility.Collapsed;
                 MainStackPanel.Visibility = Visibility.Visible;
             }
@@ -107,9 +103,9 @@ namespace auctionhouse
 
         public void TerminarSessao_Button_Click() // to be used by "Perfil" window
         {
-            // first tab is Home
+            // first tab is leiloes
             ListViewItem_Perfil.IsSelected = false;
-            ListViewItem_Home.IsSelected = true;
+            ListViewItem_Leiloes.IsSelected = true;
             MainStackPanel.Visibility = Visibility.Collapsed;
 
             LoginGrid.Visibility = Visibility.Visible;

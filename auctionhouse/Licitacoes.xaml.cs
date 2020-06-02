@@ -104,6 +104,14 @@ namespace auctionhouse
                 LicitarError.Visibility = Visibility.Collapsed;
                 LicitarError.Visibility = Visibility.Visible;
             }
+            else if (value - current_insp_leilao.getCurrentValue() < 1)
+            {
+                Licitar_error_text.Text = "A licitação tem que ser superior por pelo menos 1€";
+                // display error
+                LicitarSuccess.Visibility = Visibility.Collapsed;
+                LicitarError.Visibility = Visibility.Collapsed;
+                LicitarError.Visibility = Visibility.Visible;
+            }
             else
             {
                 MessageBoxResult m_res = MessageBox.Show("Confirmar Licitação de " + value + "€ ?", "Confirmar", MessageBoxButton.YesNo, MessageBoxImage.Question);

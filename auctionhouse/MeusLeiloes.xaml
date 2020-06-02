@@ -51,7 +51,7 @@
                 </StackPanel>
             </Grid>
 
-            <Grid x:Name="SearchGrid" >
+            <Grid x:Name="SearchGrid" Visibility="Collapsed">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition />
@@ -77,9 +77,9 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <TextBlock Foreground="#FF2196F3" FontSize="20" VerticalAlignment="Center" Margin="0 0 10 0" >Ordenar por :</TextBlock>
-                        <ComboBox Name="SortPrice" Foreground="#FF2196F3" FontSize="20" Width="140" Height="30">
-                            <ComboBoxItem IsSelected="True" >Preço menor</ComboBoxItem>
-                            <ComboBoxItem >Preço maior</ComboBoxItem>
+                        <ComboBox Name="SortPrice" Foreground="#FF2196F3" FontSize="20" Width="130" Height="30">
+                            <ComboBoxItem IsSelected="True" >Preço asce.</ComboBoxItem>
+                            <ComboBoxItem>Preço desc.</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
                 </StackPanel>
@@ -94,7 +94,8 @@
                     <Button Width="Auto" FontSize="30" Background="#FF2196F3" BorderThickness="0" Foreground="White" Click="add_leilao" Margin="438,354,438,20">Adicionar Leilão</Button>
                 </Grid>
             </Grid>
-            <Grid x:Name="AddGrid" Visibility="Collapsed">
+
+            <Grid x:Name="AddGrid" >
                 <StackPanel Grid.Row="0" Grid.Column="0">
                     <Button x:Name="AddBack" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5 5 0 0" BorderThickness="0" Background="Transparent" Foreground="#FF2196F3" Width="50" Height="50" Click="Inspect_Back_Button_Click">
                         <materialDesign:PackIcon Kind="ArrowBackCircle" Width="50" Height="50" />
@@ -106,14 +107,85 @@
                 <TextBox Name="TextBox_desc" VerticalContentAlignment="Center" FontSize="20" Foreground="#FF2196F3" Background="Transparent" TextChanged="desc_TextChanged" Margin="438,118,438.4,362"/>
                 <TextBlock VerticalAlignment="Center" Name="TextBox_value_hint" Text=" 00.00" FontSize="20" Foreground="LightBlue" Margin="438,189,438.4,291" Height="40" />
                 <TextBox Name="TextBox_value" VerticalContentAlignment="Center" FontSize="20" Foreground="#FF2196F3" Background="Transparent" TextChanged="value_TextChanged" Margin="438,189,438.4,291"/>
-                <ComboBox Name="Categoria" Foreground="#FF2196F3" FontSize="20" Width="200" Height="30">
-                    <ComboBoxItem IsSelected="True" >Categorias</ComboBoxItem>
+
+                <TextBlock Text="Categoria:" FontSize="25" HorizontalAlignment="Center" Margin="421,250,572.4,214" Foreground="#FF2196F3" Width="157" />
+                <ComboBox Name="Categoria" Foreground="#FF2196F3" FontSize="20" Width="200" Height="30" Margin="556,250,394.4,240">
                     <ComboBoxItem>Electrodomésticos</ComboBoxItem>
                     <ComboBoxItem>Telemóveis</ComboBoxItem>
                     <ComboBoxItem>Escritório</ComboBoxItem>
                     <ComboBoxItem>Automóveis</ComboBoxItem>
                 </ComboBox>
 
+                <TextBlock Text="Número de Dias:" FontSize="25" HorizontalAlignment="Center" Margin="347,311,530.4,179" Foreground="#FF2196F3" Width="273" />
+                <ComboBox Name="DayCount" Foreground="#FF2196F3" FontSize="20" Width="200" Height="30" Margin="556,311,394.4,179">
+                    <ComboBoxItem>1 Dia</ComboBoxItem>
+                    <ComboBoxItem>2 Dias</ComboBoxItem>
+                    <ComboBoxItem>3 Dias</ComboBoxItem>
+                    <ComboBoxItem>4 Dias</ComboBoxItem>
+                    <ComboBoxItem>5 Dias</ComboBoxItem>
+                    <ComboBoxItem>6 Dias</ComboBoxItem>
+                    <ComboBoxItem>7 Dias</ComboBoxItem>
+                </ComboBox>
+                <TextBox Name="img_Path" VerticalContentAlignment="Center" FontSize="20" Foreground="#FF2196F3" Background="Transparent" TextChanged="value_TextChanged" Margin="347,386,599.4,104"/>
+                <Button Width="Auto" FontSize="15" Background="#FF2196F3" BorderThickness="0" Foreground="White" Click="upload_button_Click" Margin="556,386,394.4,104">Browse</Button>
+
+
+
+                <Grid Name="NameError" Margin="0 10 0 0" Visibility="Collapsed">
+                    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn, Duration=0:0:0.4}" Margin="712,39,0.4,432">
+                        <Border BorderBrush="Red" BorderThickness="1" Margin="10,0,10.4,0.2">
+                            <StackPanel Margin="-0.8,-0.8,-1.2,-0.6">
+                                <TextBlock x:Name="Name_error_text" Foreground="Red" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </materialDesign:TransitioningContent>
+                </Grid>
+                <Grid Name="DescError" Margin="0 10 0 0" Visibility="Collapsed">
+                    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn, Duration=0:0:0.4}" Margin="712,109,0.4,361">
+                        <Border BorderBrush="Red" BorderThickness="1" Margin="10,0,10.4,0.2">
+                            <StackPanel Margin="-0.8,-0.8,-1.2,-0.6">
+                                <TextBlock x:Name="Desc_error_text" Foreground="Red" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </materialDesign:TransitioningContent>
+                </Grid>
+                <Grid Name="ValueError" Margin="0 10 0 0" Visibility="Collapsed">
+                    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn, Duration=0:0:0.4}" Margin="712,180,0.4,291">
+                        <Border BorderBrush="Red" BorderThickness="1" Margin="10,0,10.4,0.2">
+                            <StackPanel Margin="-0.8,-0.8,-1.2,-0.6">
+                                <TextBlock x:Name="Value_error_text" Foreground="Red" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </materialDesign:TransitioningContent>
+                </Grid>
+                <Grid Name="CategError" Margin="0 10 0 0" Visibility="Collapsed">
+                    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn, Duration=0:0:0.4}" Margin="756,236,0.4,234">
+                        <Border BorderBrush="Red" BorderThickness="1" Margin="10,0,10.4,0.2">
+                            <StackPanel Margin="-0.8,-0.8,-1.2,-0.6">
+                                <TextBlock x:Name="Categ_error_text" Foreground="Red" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </materialDesign:TransitioningContent>
+                </Grid>
+                <Grid Name="DayError" Margin="0 10 0 0" Visibility="Collapsed">
+                    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn, Duration=0:0:0.4}" Margin="757,297,0.4,173">
+                        <Border BorderBrush="Red" BorderThickness="1" Margin="10,0,10.4,0.2">
+                            <StackPanel Margin="-0.8,-0.8,-1.2,-0.6">
+                                <TextBlock x:Name="Day_error_text" Foreground="Red" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </materialDesign:TransitioningContent>
+                </Grid>
+                <Grid Name="ImgError" Margin="0 10 0 0" Visibility="Collapsed">
+                    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn, Duration=0:0:0.4}" Margin="757,371,0.4,99">
+                        <Border BorderBrush="Red" BorderThickness="1" Margin="10,0,10.4,0.2">
+                            <StackPanel Margin="-0.8,-0.8,-1.2,-0.6">
+                                <TextBlock x:Name="Img_error_text" Foreground="Red" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </materialDesign:TransitioningContent>
+                </Grid>
+                
                 <Button Width="Auto" FontSize="30" Background="#FF2196F3" BorderThickness="0" Foreground="White" Click="add_leilao_confirm" Margin="438,449,438.4,20">Submit</Button>
             </Grid>
 

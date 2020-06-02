@@ -85,7 +85,15 @@ namespace auctionhouse
                 tempo_text.Text = " " + t;
             }
 
-            img.Source = new BitmapImage(new Uri(l.imgPath, UriKind.Relative));
+            if (l.imgRelative)
+            { 
+                img.Source = new BitmapImage(new Uri(l.imgPath, UriKind.Relative));
+            }
+            else
+            {
+                img.Source = new BitmapImage(new Uri(l.imgPath, UriKind.Absolute));
+            }
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

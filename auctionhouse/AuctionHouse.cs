@@ -122,6 +122,7 @@ namespace auctionhouse
         public String Categoria;
         public DateTime DataFim;
         public String imgPath;
+        public Boolean imgRelative;
         public String Owner;
         public List<Licitacao> Licitacoes;
         public double currentValue;
@@ -137,6 +138,21 @@ namespace auctionhouse
             Owner = Own;
             currentValue = startValue;
             Licitacoes = new List<Licitacao>();
+            imgRelative = true;
+        }
+
+        public Leilao(String n, String desc, String e, String categ, DateTime fim, String img, Boolean rel, String Own, double startValue)
+        {
+            Nome = n;
+            Descricao = desc;
+            Estado = e;
+            Categoria = categ;
+            DataFim = fim;
+            imgPath = img;
+            Owner = Own;
+            currentValue = startValue;
+            Licitacoes = new List<Licitacao>();
+            imgRelative = rel;
         }
 
         public Boolean addLicitacao(Licitacao l)

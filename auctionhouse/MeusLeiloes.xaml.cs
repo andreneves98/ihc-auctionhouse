@@ -209,7 +209,7 @@ namespace auctionhouse
                 String[] list = ((ComboBoxItem)DayCount.SelectedItem).Content.ToString().Split(' ');
                 int.TryParse(list[0], out days);
 
-                Leilao l = l = new Leilao(nome, desc, "Aberto", category, DateTime.Now.AddDays(days), ("images/" + img_Path.Text), username, value);
+                Leilao l = l = new Leilao(nome, desc, "Aberto", category, DateTime.Now.AddDays(days), img_Path.Text, false, username, value);
                 ahref.addLeilao(l);
 
                 SearchGrid.Visibility = Visibility.Visible;
@@ -267,6 +267,7 @@ namespace auctionhouse
             if (result == true)
             {
                 // Open document 
+                /*
                 string filename = dlg.FileName;
                 String[] splited = filename.Split('\\');
                 String folder = Path.GetFullPath(@"../../images");
@@ -286,6 +287,8 @@ namespace auctionhouse
                 filename += splited[splited.Length - 1];
                 System.IO.File.Copy(filename, newPath);
                 img_Path.Text = "images/"+ splited[splited.Length-1];
+                */
+                img_Path.Text = dlg.FileName;
             }
         }
     }

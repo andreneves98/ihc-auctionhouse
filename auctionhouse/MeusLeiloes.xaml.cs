@@ -1,7 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace auctionhouse
@@ -50,17 +50,28 @@ namespace auctionhouse
             int size = (current_insp_leilao.Licitacoes).Count;
             if (size > 5)
             {
-                for (int i = size - 1; i > size - 6; i--)
+                for (int j = size - 1; j > size - 6; j--)
                 {
-                    Inspect_lei_hist.Text += (current_insp_leilao.Licitacoes[i].user + ": " + current_insp_leilao.Licitacoes[i].value + "€\n");
+                    Inspect_lei_hist.Text += (current_insp_leilao.Licitacoes[j].user + ": " + current_insp_leilao.Licitacoes[j].value + "€\n");
                 }
             }
             else
             {
-                for (int i = size - 1; i > -1; i--)
+                for (int j = size - 1; j > -1; j--)
                 {
-                    Inspect_lei_hist.Text += (current_insp_leilao.Licitacoes[i].user + ": " + current_insp_leilao.Licitacoes[i].value + "€\n");
+                    Inspect_lei_hist.Text += (current_insp_leilao.Licitacoes[j].user + ": " + current_insp_leilao.Licitacoes[j].value + "€\n");
                 }
+            }
+
+            if (current_insp_leilao.Estado == "Aberto")
+            {
+                Inspect_lei_estado.Foreground = Brushes.Green;
+                Inspect_lei_tempo.Text = "Tempo restante: " + current_insp_leilao.timeToEnd();
+            }
+            else // Fechado
+            {
+                Inspect_lei_estado.Foreground = Brushes.PaleVioletRed;
+                Inspect_lei_tempo.Text = "Tempo restante: " + "0d 00:00:00h";
             }
         }
 
@@ -76,6 +87,7 @@ namespace auctionhouse
             SearchGrid.Visibility = Visibility.Visible;
             InspectGrid.Visibility = Visibility.Collapsed;
             AddGrid.Visibility = Visibility.Collapsed;
+            CreationSuccess.Visibility = Visibility.Collapsed;
         }
 
         private void Search_Options_Changed(object sender, RoutedEventArgs e)
@@ -214,6 +226,7 @@ namespace auctionhouse
 
                 SearchGrid.Visibility = Visibility.Visible;
                 AddGrid.Visibility = Visibility.Collapsed;
+                CreationSuccess.Visibility = Visibility.Visible;
 
                 setLeiloes("", "Todos", "Preço asce.");
 

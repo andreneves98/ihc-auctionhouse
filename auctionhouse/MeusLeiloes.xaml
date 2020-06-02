@@ -47,11 +47,12 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Grid.Column="1">
+                    <TextBlock FontWeight="Bold" Text="Lista de Licitações:" FontSize="30" Foreground="#FF2196F3" ></TextBlock>
                     <TextBlock x:Name="Inspect_lei_hist" FontSize="30" Foreground="#FF2196F3" ></TextBlock>
                 </StackPanel>
             </Grid>
 
-            <Grid x:Name="SearchGrid" Visibility="Collapsed">
+            <Grid x:Name="SearchGrid" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition />
@@ -91,11 +92,20 @@
 
                         </StackPanel>
                     </ScrollViewer>
-                    <Button Width="Auto" FontSize="30" Background="#FF2196F3" BorderThickness="0" Foreground="White" Click="add_leilao" Margin="438,354,438,20">Adicionar Leilão</Button>
+                    <Button Width="Auto" FontSize="30" Background="#FF2196F3" BorderThickness="0" Foreground="White" Click="add_leilao" Margin="130,354,756,20">Adicionar Leilão</Button>
+                    <Grid Name="CreationSuccess" Margin="441,363,462,29" Visibility="Collapsed">
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn, Duration=0:0:0.4}">
+                            <Border BorderBrush="Green" BorderThickness="1">
+                                <StackPanel>
+                                    <TextBlock Foreground="Green" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap" Text="Leilão Criado Com Sucesso!"></TextBlock>
+                                </StackPanel>
+                            </Border>
+                        </materialDesign:TransitioningContent>
+                    </Grid>
                 </Grid>
             </Grid>
 
-            <Grid x:Name="AddGrid" >
+            <Grid x:Name="AddGrid" Visibility="Collapsed">
                 <StackPanel Grid.Row="0" Grid.Column="0">
                     <Button x:Name="AddBack" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5 5 0 0" BorderThickness="0" Background="Transparent" Foreground="#FF2196F3" Width="50" Height="50" Click="Inspect_Back_Button_Click">
                         <materialDesign:PackIcon Kind="ArrowBackCircle" Width="50" Height="50" />
@@ -126,8 +136,8 @@
                     <ComboBoxItem>6 Dias</ComboBoxItem>
                     <ComboBoxItem>7 Dias</ComboBoxItem>
                 </ComboBox>
-                <TextBox Name="img_Path" VerticalContentAlignment="Center" FontSize="20" Foreground="#FF2196F3" Background="Transparent" TextChanged="value_TextChanged" Margin="347,386,599.4,104"/>
-                <Button Width="Auto" FontSize="15" Background="#FF2196F3" BorderThickness="0" Foreground="White" Click="upload_button_Click" Margin="556,386,394.4,104">Browse</Button>
+                <TextBlock Name="img_Path" VerticalAlignment="Center" FontSize="20" Foreground="#FF2196F3" Background="Transparent" Margin="438,383,394.4,110"/>
+                <Button Width="Auto" FontSize="15" Background="#FF2196F3" BorderThickness="0" Foreground="White" Click="upload_button_Click" Margin="230,380,720.4,110">Browse</Button>
 
 
 

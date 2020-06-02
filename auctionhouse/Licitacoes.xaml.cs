@@ -35,7 +35,21 @@ namespace auctionhouse
 
             foreach (Leilao lei in userLeiloes)
             {
-                Leiloes_StackPanel.Children.Add(new Leiloes_leilao(this, lei));
+                if (lei.hasLicitacoes() && lei.isBidding(username))
+                {
+                    if (lei.Owner != username && ahref.getLastLicitacaoUser(lei) == username)
+                    {
+                        Leiloes_StackPanel.Children.Add(new Leiloes_leilao(this, lei, username, "leading"));
+                    }
+                    else
+                    {
+                        Leiloes_StackPanel.Children.Add(new Leiloes_leilao(this, lei, username, "losing"));
+                    }
+                }
+                else if (lei.hasLicitacoes() && !lei.isBidding(username))
+                {
+                    Leiloes_StackPanel.Children.Add(new Leiloes_leilao(this, lei, username, ""));
+                }
             }
         }
 
@@ -66,6 +80,39 @@ namespace auctionhouse
             Inspect_lei_ult_licit.Text = "Última licitação: " + current_insp_leilao.getCurrentValue().ToString() + " €";
             Inspect_lei_tempo.Text = "Tempo restante: " + current_insp_leilao.timeToEnd();
             Inspect_lei_img.Source = new BitmapImage(new Uri(current_insp_leilao.imgPath, UriKind.Relative));
+
+            if (current_insp_leilao.imgRelative)
+            {
+                Inspect_lei_img.Source = new BitmapImage(new Uri(current_insp_leilao.imgPath, UriKind.Relative));
+            }
+            else
+            {
+                Inspect_lei_img.Source = new BitmapImage(new Uri(current_insp_leilao.imgPath, UriKind.Absolute));
+            }
+
+            if (current_insp_leilao.Estado == "Aberto")
+            {
+                Inspect_lei_estado.Foreground = Brushes.Green;
+                Inspect_lei_tempo.Text = "Tempo restante: " + current_insp_leilao.timeToEnd();
+
+                if(current_insp_leilao.Owner != username && ahref.getLastLicitacaoUser(current_insp_leilao) == username)
+                {
+                    Inspect_status.Text = "À frente";
+                    Inspect_status.Foreground = Brushes.Green;
+                    Inspect_status.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    Inspect_status.Text = "Ultrapassado";
+                    Inspect_status.Foreground = Brushes.Red;
+                    Inspect_status.Visibility = Visibility.Visible;
+                }
+            }
+            else // Fechado
+            {
+                Inspect_lei_estado.Foreground = Brushes.PaleVioletRed;
+                Inspect_lei_tempo.Text = "Tempo restante: " + "0d 00:00:00h";
+            }
         }
 
         public void Inspect_Back_Button_Click(object sender, System.Windows.RoutedEventArgs e)

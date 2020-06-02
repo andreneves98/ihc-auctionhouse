@@ -41,6 +41,11 @@ namespace auctionhouse
             return username;
         }
 
+        public String getLastLicitacaoUser(Leilao lei) // retorna o user à frente nas licitações de um leilão
+        {
+            return lei.Licitacoes.Last().getUser();
+        }
+
         public Leilao[] getUserLeiloes(String user) // leiloes onde user licitou
         {
             List<Leilao> userLeiloes = new List<Leilao>();
@@ -208,6 +213,18 @@ namespace auctionhouse
         {
             return Licitacoes.Count > 0;
         }
+
+        public bool isBidding(String username)
+        {
+            foreach(Licitacao lic in Licitacoes)
+            {
+                if(lic.user.Equals(username))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
     public class Licitacao
@@ -219,6 +236,11 @@ namespace auctionhouse
         {
             user = u;
             value = v;
+        }
+
+        public String getUser()
+        {
+            return this.user;
         }
     }
 }

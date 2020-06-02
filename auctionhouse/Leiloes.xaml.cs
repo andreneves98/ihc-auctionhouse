@@ -10,6 +10,7 @@ namespace auctionhouse
     {
         private AuctionHouse ahref;
         private Leilao current_insp_leilao;
+        private String username;
 
         public Leiloes()
         {
@@ -17,6 +18,7 @@ namespace auctionhouse
 
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             ahref = mainWindow.ah;
+            username = ahref.getUsername();
 
             Categ.AddHandler(ComboBox.SelectionChangedEvent, new RoutedEventHandler(Search_Options_Changed));
             SortPrice.AddHandler(ComboBox.SelectionChangedEvent, new RoutedEventHandler(Search_Options_Changed));
@@ -76,6 +78,22 @@ namespace auctionhouse
             {
                 Inspect_lei_estado.Foreground = Brushes.Green;
                 Inspect_lei_tempo.Text = "Tempo restante: " + current_insp_leilao.timeToEnd();
+
+                if (current_insp_leilao.isBidding(username))
+                {
+                    if (current_insp_leilao.Owner != username && current_insp_leilao.isBidding(username) && ahref.getLastLicitacaoUser(current_insp_leilao) == username)
+                    {
+                        Inspect_status.Text = "À frente";
+                        Inspect_status.Foreground = Brushes.Green;
+                        Inspect_status.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        Inspect_status.Text = "Ultrapassado";
+                        Inspect_status.Foreground = Brushes.Red;
+                        Inspect_status.Visibility = Visibility.Visible;
+                    }
+                }
             }
             else // Fechado
             {
@@ -100,7 +118,14 @@ namespace auctionhouse
                 Inspect_lei_ult_licit.Text = "Valor inicial: " + current_insp_leilao.getCurrentValue().ToString() + " €";
             }
             
-            Inspect_lei_img.Source = new BitmapImage(new Uri(current_insp_leilao.imgPath, UriKind.Relative));
+            if (current_insp_leilao.imgRelative)
+            {
+                Inspect_lei_img.Source = new BitmapImage(new Uri(current_insp_leilao.imgPath, UriKind.Relative));
+            }
+            else
+            {
+                Inspect_lei_img.Source = new BitmapImage(new Uri(current_insp_leilao.imgPath, UriKind.Absolute));
+            }
         }
 
         public void Inspect_Back_Button_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -138,7 +163,26 @@ namespace auctionhouse
             Leilao[] leiloes = ahref.getLeiloes(words, categ, sortby, null);
             foreach (Leilao lei in leiloes)
             {
-                Leiloes_StackPanel.Children.Add(new Leiloes_leilao(this, lei));
+                /*if(lei.hasLicitacoes())
+                {
+                    Leiloes_StackPanel.Children.Add(new Leiloes_leilao(this, lei));
+                }*/
+
+                if (lei.hasLicitacoes() && lei.isBidding(username))
+                {
+                    if (lei.Owner != username && ahref.getLastLicitacaoUser(lei) == username)
+                    {
+                        Leiloes_StackPanel.Children.Add(new Leiloes_leilao(this, lei, "leading"));
+                    }
+                    else
+                    {
+                        Leiloes_StackPanel.Children.Add(new Leiloes_leilao(this, lei, "losing"));
+                    }
+                }
+                else
+                {
+                    Leiloes_StackPanel.Children.Add(new Leiloes_leilao(this, lei, ""));
+                }
             }
         }
 

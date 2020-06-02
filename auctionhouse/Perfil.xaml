@@ -11,8 +11,8 @@
         <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}" Margin="-10,-10,10,10">
             <Grid HorizontalAlignment="Left" Height="500" Margin="10,10,0,0" VerticalAlignment="Top" Width="1130">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0 120 0 0">
-                    <Border Margin="0 0 0 5" Background="LightGray" Height="170" HorizontalAlignment="Center">
-                        <Image Name="img" Stretch="Fill" Margin="2 2 2 2" Width="150" Height="170" Source="images/artur_user.jpg" ></Image>
+                    <Border Margin="0 0 0 5" Background="LightGray" Height="180" HorizontalAlignment="Center">
+                        <Image Name="img" Stretch="Fill" Margin="2 2 2 2" Width="150" Height="180" Source="images/artur_user.jpg" ></Image>
                     </Border>
                     <StackPanel x:Name="Inspect_lei_rating" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
                         <materialDesign:PackIcon Kind="Star" Width="20" Height="20" Foreground="LightGray" VerticalAlignment="Center"/>

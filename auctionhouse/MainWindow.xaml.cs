@@ -79,8 +79,8 @@ namespace auctionhouse
 
         private void Entrar_Button_Click(object sender, RoutedEventArgs e)
         {
-            String Username = "teste";
-            String Password = "teste";
+            String Username = "arturfilipe";
+            String Password = "arturf";
             String fullName = "Artur Filipe";
 
             // check password

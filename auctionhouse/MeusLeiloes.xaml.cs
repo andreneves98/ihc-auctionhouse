@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -21,6 +22,7 @@ namespace auctionhouse
             Categ.AddHandler(ComboBox.SelectionChangedEvent, new RoutedEventHandler(Search_Options_Changed));
             SortPrice.AddHandler(ComboBox.SelectionChangedEvent, new RoutedEventHandler(Search_Options_Changed));
             Categoria.AddHandler(ComboBox.SelectionChangedEvent, new RoutedEventHandler(Search_Options_Changed));
+            DayCount.AddHandler(ComboBox.SelectionChangedEvent, new RoutedEventHandler(Search_Options_Changed));
             this.username = username;
             setLeiloes("", "Todos", "Preço asce.");
         }
@@ -110,43 +112,91 @@ namespace auctionhouse
 
         private void add_leilao_confirm(object sender, RoutedEventArgs e)
         {
-            String category = ((ComboBoxItem)Categ.SelectedItem).Content.ToString();
+            int days;
             double value = 0;
             String desc = "";
             String nome = "";
             bool res = double.TryParse(TextBox_value.Text, out value);
             if (TextBox_name.Text.Length < 1)
             {
-                /*Licitar_error_text.Text = "Insira um valor superior à ultima licitação.";
+                Name_error_text.Text = "Insira um nome para o Leilão.";
                 // display error
-                LicitarSuccess.Visibility = Visibility.Collapsed;
-                LicitarError.Visibility = Visibility.Collapsed;
-                LicitarError.Visibility = Visibility.Visible;*/
+                NameError.Visibility = Visibility.Collapsed;
+                ValueError.Visibility = Visibility.Collapsed;
+                DescError.Visibility = Visibility.Collapsed;
+                CategError.Visibility = Visibility.Collapsed;
+                DayError.Visibility = Visibility.Collapsed;
+                ImgError.Visibility = Visibility.Collapsed;
+                NameError.Visibility = Visibility.Visible;
             }else if (TextBox_desc.Text.Length < 1)
             {
-                /*Licitar_error_text.Text = "Insira um valor superior à ultima licitação.";
+                Desc_error_text.Text = "Insira uma descrição para o Leilão.";
                 // display error
-                LicitarSuccess.Visibility = Visibility.Collapsed;
-                LicitarError.Visibility = Visibility.Collapsed;
-                LicitarError.Visibility = Visibility.Visible;*/
-            }else if (!res)
+                NameError.Visibility = Visibility.Collapsed;
+                ValueError.Visibility = Visibility.Collapsed;
+                DescError.Visibility = Visibility.Collapsed;
+                CategError.Visibility = Visibility.Collapsed;
+                DayError.Visibility = Visibility.Collapsed;
+                ImgError.Visibility = Visibility.Collapsed;
+                DescError.Visibility = Visibility.Visible;
+            }
+            else if (!res)
             {
-                /*Licitar_error_text.Text = "Insira um valor numérico.";
+                Value_error_text.Text = "Insira um valor inicial válido para o Leilão.";
                 // display error
-                LicitarSuccess.Visibility = Visibility.Collapsed;
-                LicitarError.Visibility = Visibility.Collapsed;
-                LicitarError.Visibility = Visibility.Visible;*/
-            }else
+                NameError.Visibility = Visibility.Collapsed;
+                ValueError.Visibility = Visibility.Collapsed;
+                DescError.Visibility = Visibility.Collapsed;
+                CategError.Visibility = Visibility.Collapsed;
+                DayError.Visibility = Visibility.Collapsed;
+                ImgError.Visibility = Visibility.Collapsed;
+                ValueError.Visibility = Visibility.Visible;
+            }
+            else if(((ComboBoxItem)Categoria.SelectedItem) == null)
             {
-                /*// clean prev error
-                LicitarError.Visibility = Visibility.Collapsed;
-                LicitarSuccess.Visibility = Visibility.Collapsed;
-
-                // display success
-                LicitarSuccess.Visibility = Visibility.Visible;
-
-                // clear value
-                licitar_text.Text = "";*/
+                Categ_error_text.Text = "Insira uma Categoria para o Leilão.";
+                // display error
+                NameError.Visibility = Visibility.Collapsed;
+                ValueError.Visibility = Visibility.Collapsed;
+                DescError.Visibility = Visibility.Collapsed;
+                CategError.Visibility = Visibility.Collapsed;
+                DayError.Visibility = Visibility.Collapsed;
+                ImgError.Visibility = Visibility.Collapsed;
+                CategError.Visibility = Visibility.Visible;
+            }
+            else if(((ComboBoxItem)DayCount.SelectedItem) == null)
+            {
+                Day_error_text.Text = "Insira o número de dias para o Leilão.";
+                // display error
+                NameError.Visibility = Visibility.Collapsed;
+                ValueError.Visibility = Visibility.Collapsed;
+                DescError.Visibility = Visibility.Collapsed;
+                CategError.Visibility = Visibility.Collapsed;
+                DayError.Visibility = Visibility.Collapsed;
+                ImgError.Visibility = Visibility.Collapsed;
+                DayError.Visibility = Visibility.Visible;
+            }
+            else if(img_Path.Text.Length < 1)
+            {
+                Img_error_text.Text = "Insira uma Imagem para o Leilão.";
+                // display error
+                NameError.Visibility = Visibility.Collapsed;
+                ValueError.Visibility = Visibility.Collapsed;
+                DescError.Visibility = Visibility.Collapsed;
+                CategError.Visibility = Visibility.Collapsed;
+                DayError.Visibility = Visibility.Collapsed;
+                ImgError.Visibility = Visibility.Collapsed;
+                ImgError.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                // clean prev error
+                NameError.Visibility = Visibility.Collapsed;
+                ValueError.Visibility = Visibility.Collapsed;
+                DescError.Visibility = Visibility.Collapsed;
+                CategError.Visibility = Visibility.Collapsed;
+                DayError.Visibility = Visibility.Collapsed;
+                ImgError.Visibility = Visibility.Collapsed;
 
                 nome = TextBox_name.Text;
                 desc = TextBox_desc.Text;
@@ -155,7 +205,11 @@ namespace auctionhouse
                 TextBox_desc.Text = "";
                 TextBox_value.Text = "";
 
-                Leilao l = l = new Leilao(nome, desc, "Aberto", category, DateTime.Now.AddDays(2), "images/maquina.jpg", username, 20);
+                String category = ((ComboBoxItem)Categoria.SelectedItem).Content.ToString();
+                String[] list = ((ComboBoxItem)DayCount.SelectedItem).Content.ToString().Split(' ');
+                int.TryParse(list[0], out days);
+
+                Leilao l = l = new Leilao(nome, desc, "Aberto", category, DateTime.Now.AddDays(days), ("images/" + img_Path.Text), username, value);
                 ahref.addLeilao(l);
 
                 SearchGrid.Visibility = Visibility.Visible;
@@ -190,6 +244,48 @@ namespace auctionhouse
             if (TextBox_value.Text.Length > 0)
             {
                 TextBox_value_hint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void upload_button_Click(object sender, System.EventArgs e)
+        {
+            // Create OpenFileDialog 
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+
+
+            // Set filter for file extension and default file extension 
+            dlg.DefaultExt = ".png";
+            dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+
+
+            // Display OpenFileDialog by calling ShowDialog method 
+            Nullable<bool> result = dlg.ShowDialog();
+
+
+            // Get the selected file name and display in a TextBox 
+            if (result == true)
+            {
+                // Open document 
+                string filename = dlg.FileName;
+                String[] splited = filename.Split('\\');
+                String folder = Path.GetFullPath(@"../../images");
+                String[] splited2 = folder.Split('\\');
+                folder = "";
+                for (int i = 0; i < splited2.Length - 1; i++)
+                {
+                    folder += splited2[i] + '/';
+                }
+                folder += splited2[splited2.Length - 1];
+                String newPath = folder + '/' +  splited[splited.Length-1];
+                filename = "";
+                for(int i = 0;i< splited.Length-1; i++)
+                {
+                    filename += splited[i] + '/';
+                }
+                filename += splited[splited.Length - 1];
+                System.IO.File.Copy(filename, newPath);
+                img_Path.Text = "images/"+ splited[splited.Length-1];
             }
         }
     }

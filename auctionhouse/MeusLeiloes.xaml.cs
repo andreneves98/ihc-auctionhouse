@@ -76,6 +76,7 @@ namespace auctionhouse
             SearchGrid.Visibility = Visibility.Visible;
             InspectGrid.Visibility = Visibility.Collapsed;
             AddGrid.Visibility = Visibility.Collapsed;
+            CreationSuccess.Visibility = Visibility.Collapsed;
         }
 
         private void Search_Options_Changed(object sender, RoutedEventArgs e)
@@ -214,6 +215,7 @@ namespace auctionhouse
 
                 SearchGrid.Visibility = Visibility.Visible;
                 AddGrid.Visibility = Visibility.Collapsed;
+                CreationSuccess.Visibility = Visibility.Visible;
 
                 setLeiloes("", "Todos", "Preço asce.");
 

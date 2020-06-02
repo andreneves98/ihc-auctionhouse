@@ -9,6 +9,7 @@ namespace auctionhouse
     public partial class Perfil : UserControl
     {
         private AuctionHouse ahref;
+
         public Perfil()
         {
             InitializeComponent();
@@ -36,8 +37,12 @@ namespace auctionhouse
 
         private void TerminarSessao_Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.TerminarSessao_Button_Click();
+            MessageBoxResult m_res = MessageBox.Show("Terminar Sessão?", "Confirmar", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (m_res == MessageBoxResult.Yes)
+            {
+                var mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.TerminarSessao_Button_Click();
+            }
         }
     }
 }

@@ -25,7 +25,7 @@
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20"><Run FontWeight="Bold" Text="Idade: "/><Run Name="perfil_idade" Text="32 anos"/></TextBlock>
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20"><Run FontWeight="Bold" Text="Leilões: "/><Run Name="perfil_leiloes" Text="15"/></TextBlock>
                 </StackPanel>
-                <Button Content="Terminar Sessão" HorizontalAlignment="Left" Margin="888,446,0,0" VerticalAlignment="Top" Width="198" RenderTransformOrigin="0.427,1.9" Height="44" FontSize="20" Background="#FFF71414" Foreground="White" FontWeight="Bold" Click="TerminarSessao_Button_Click" />
+                <Button Content="Terminar Sessão" HorizontalAlignment="Left" Margin="888,446,0,0" VerticalAlignment="Top" Width="198" RenderTransformOrigin="0.427,1.9" Height="44" FontSize="20" Background="#FFF71414" Foreground="White" FontWeight="Bold" Click="TerminarSessao_Button_Click"/>
             </Grid>
         </materialDesign:TransitioningContent>
     </Grid>

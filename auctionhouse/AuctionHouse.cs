@@ -126,6 +126,7 @@ namespace auctionhouse
         public String Owner;
         public List<Licitacao> Licitacoes;
         public double currentValue;
+        public String currentValueUser;
 
         public Leilao(String n, String desc, String e, String categ, DateTime fim, String img, String Own, double startValue)
         {
@@ -161,6 +162,7 @@ namespace auctionhouse
             {
                 if( l.value > currentValue)
                 {
+                    currentValueUser = l.user;
                     currentValue = l.value;
                     Licitacoes.Add(l);
                 }
@@ -171,6 +173,7 @@ namespace auctionhouse
             }
             else
             {
+                currentValueUser = l.user;
                 currentValue = l.value;
                 Licitacoes.Add(l);
             }
@@ -189,11 +192,16 @@ namespace auctionhouse
 
             var diff = DataFim.Subtract(now);
             return String.Format("{0}d {1}:{2}:{3}h", diff.Days, diff.Hours, diff.Minutes, diff.Seconds);
-        } 
+        }
 
         public double getCurrentValue()
         {
             return currentValue;
+        }
+
+        public String getCurrentValueUser()
+        {
+            return currentValueUser;
         }
 
         public bool hasLicitacoes()

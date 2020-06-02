@@ -47,7 +47,14 @@ namespace auctionhouse
             Inspect_lei_nome.Text = current_insp_leilao.Nome;
             Inspect_lei_desc.Text = current_insp_leilao.Descricao;
             Inspect_lei_estado.Text = current_insp_leilao.Estado;
-            Inspect_lei_owner.Text = current_insp_leilao.Owner;
+
+            String is_owner = "";
+            if (current_insp_leilao.Owner == ahref.getUsername())
+            {
+                is_owner = " (Tu)";
+            }
+
+            Inspect_lei_owner.Text = current_insp_leilao.Owner + is_owner;
             LicitarOption.Visibility = Visibility.Visible;
 
 
@@ -81,7 +88,12 @@ namespace auctionhouse
 
             if (current_insp_leilao.hasLicitacoes())
             {
-                Inspect_lei_ult_licit.Text = "Última licitação: " + current_insp_leilao.getCurrentValue().ToString() + " €";
+                String users_licit = "";
+                if (current_insp_leilao.getCurrentValueUser() == ahref.getUsername())
+                {
+                    users_licit = "(Teu)";
+                }
+                Inspect_lei_ult_licit.Text = "Última licitação: " + current_insp_leilao.getCurrentValue().ToString() + " € " + users_licit;
             }
             else
             {
@@ -177,19 +189,23 @@ namespace auctionhouse
             }
             else
             {
-                // clean prev error
-                LicitarError.Visibility = Visibility.Collapsed;
-                LicitarSuccess.Visibility = Visibility.Collapsed;
+                MessageBoxResult m_res = MessageBox.Show("Confirmar Licitação de "+ value+"€ ?", "Confirmar",MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if(m_res == MessageBoxResult.Yes)
+                {
+                    // clean prev error
+                    LicitarError.Visibility = Visibility.Collapsed;
+                    LicitarSuccess.Visibility = Visibility.Collapsed;
 
-                // display success
-                LicitarSuccess.Visibility = Visibility.Visible;
+                    // display success
+                    LicitarSuccess.Visibility = Visibility.Visible;
 
-                // clear value
-                licitar_text.Text = "";
+                    // clear value
+                    licitar_text.Text = "";
 
-                Licitacao licit = new Licitacao(ahref.getUsername(), value);
-                current_insp_leilao.addLicitacao(licit); // add to Leilao
-                init_inspect_fields();
+                    Licitacao licit = new Licitacao(ahref.getUsername(), value);
+                    current_insp_leilao.addLicitacao(licit); // add to Leilao
+                    init_inspect_fields();
+                }
             }
         }
     }
